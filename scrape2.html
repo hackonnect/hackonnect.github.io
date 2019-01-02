@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Navigating Nested Structures</title>
+            <style>
+            div {
+                border: solid 3px #000000;
+                padding: 5px;
+                margin: 5px;
+                min-height: 20px;
+            }
+            div.outer {
+                background-color: #ff0000;
+            }
+            div.parent {
+                background-color: #ff8800;
+            }
+            div.child {
+                background-color: #ffff00;
+            }
+            div.sibling {
+                background-color: #ffdd00;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="outer">
+            <div class="parent">
+                <div class="child sibling"></div>
+                <div class="child sibling"></div>
+            </div>
+            <div class="parent">
+                <div class="child"></div>
+            </div>
+            <div class="parent">
+            </div>
+            <div class="parent">
+                <div class="child sibling"></div>
+                <div class="child sibling"></div>
+                <div class="child sibling"></div>
+            </div>
+        </div>
+    </body>
+</html>
