@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" href="https://use.typekit.net/mhv5bqg.css">
+        <link type="text/css" rel="stylesheet" href="css/materialize.css"  media="screen, projection">
+        <link type="text/css" rel="stylesheet" href="css/style.css"  media="screen, projection">
+
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
+        <title>Hackonnect Course Resources</title>
+    </head>
+    <body>
+        <!-- Navbar -->
+        <div class="navbar-fixed">
+            <nav class="purple lighten-1">
+                <div class="nav-wrapper container">
+                    <a href="#!" data-target="mobile-nav" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+                    <a href="#!" class="brand-logo"><div class="row"><div class="col s12 m3"><img src="media/logo.png" class="logo"></div><div class="col m9 hide-on-small-and-down">&nbsp;Hackonnect</div></div></a>
+                    <ul class="right hide-on-med-and-down">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a class="dropdown-trigger" href="#!" data-target="courses-dropdown">Course Resources<i class="material-icons right">arrow_drop_down</i></a></li>
+                        <ul id="courses-dropdown" class="dropdown-content">
+                            <li><a href="microbit.html">Microbit</a></li>
+                            <li><a href="web.html">Web Scraping</a></li>
+                            <li><a href="api.html">APIs</a></li>
+                            <li><a href="ml.html">Machine Learning</a></li>
+                        </ul>
+                        <li><a href="https://hackonnect.squarespace.com">Official Website</a></li>
+                        <li><a href="https://www.github.com/hackonnect">Github</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div> 
+        <ul id="mobile-nav" class="sidenav">
+            <li><a href="index.html">Home</a></li>
+            <li><div class="divider"></div></li>
+            <li><a class="subheader">Courses</a></li>
+            <li><a href="microbit.html">Microbit</a></li>
+            <li><a href="web.html">Web Scraping</a></li>
+            <li><a href="api.html">API</a></li>
+            <li><a href="ml.html">Machine Learning</a></li>
+            <li><div class="divider"></div></li>
+            <li><a href="https://hackonnect.squarespace.com">Official Website</a></li>
+            <li><a href="https://www.github.com/hackonnect">Github</a></li>
+    </ul>
+
+        <!-- Introduction -->
+        <div class="container row">
+            <div class="col s12 m6 l4">
+                <div class="intro-card card white container">
+                    <span class="card-title">Welcome</span>
+                    <p>This website is dedicated to the resources required for Hackonnect courses and group projects. Here, you will find links to explanations for concepts introduced in each course, sample code and various exercises. Additional resources for each topic are also included if you are interested. We also have various resources that may come in handy when completing the group projects.</p>
+                </div>
+            </div>
+            <div class="col s12 m6 l4 img-card">
+                <img src="media/mascot.png">
+            </div>
+            <div class="col s12 m6 l4 img-card hide-on-small-and-down hide-on-large-only">
+                <img src="media/logo.png">
+            </div>
+            <div class="col s12 m6 l4">
+                <div class="intro-card card white container">
+                    <span class="card-title">What is Hackonnect?</span>
+                    <p>Hackonnect is an event that revolves around connecting the world through various types of software and hardware. Through workshops and group projects, we hope to inspire students' interest in technologies and broadening their views of how it can be used to change our world for the better.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Course Descriptions -->
+        <div class="row z-depth-1 purple lighten-3">
+            <h1 class="centered white-text">Our Courses</h1>
+        </div>
+
+        <div class="container row">
+            <div class="col s12">
+                <div class="course-card card white container">
+                    <span class="card-title">Microbit Course</span>
+                    <p>The Internet of Things has dawned upon us, allowing different devices to connect and share information. This has led to a large rise in the use of embedded devices everywhere, from cars to door locks to traffic lights. In this course, we will use micro:bits to interact with the environment around us and connect devices together in order to create our own mini IoT.</p>
+                </div>
+            </div>
+            <div class="col s12">
+                <div class="course-card card white container">
+                    <span class="card-title">Web Scraping Course</span>
+                    <p>There is an overwhelming amount of information available to us on webpages and we cannot possibly parse through all this information in our lifetime. This is where web scraping comes in - we can make programs that automatically retrieve the most important information on websites for us. In this web scraping course, we will be learning the basics of web scraping using Python and retrieve information from various websites.</p>
+                </div>
+            </div>
+            <div class="col s12">
+                <div class="course-card card white container">
+                    <span class="card-title">APIs Course</span>
+                    <p>APIs, or Application Programming Interfaces, are very common nowadays. In fact, there are APIs for nearly everything from checking the weather today to looking up stock prices to viewing your latest video game match results. In this course, we will learn how to use APIs through looking at the different possible requests and be able to setup our own APIs for others to interface with.</p>
+                </div>
+            </div>
+            <div class="col s12">
+                <div class="course-card card white container">
+                    <span class="card-title">Machine Learning Course</span>
+                    <p>With all the hype around it, machine learning seems like the 'next biggest thing' that may revolutionise our world. With increased computational power and more and more data being collected everyday, algorithms of machine learning that originated in the 70s and 80s can finally be put to use. In this course, we will look at how we can use large datasets in order to create a simple machine learning model that helps us predict things.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="page-footer purple lighten-1">
+            <div class="footer-copyright purple lighten-1">
+                <div class="container">
+                    © 2019 Hackonnect. All rights reserved.
+                    <a class="grey-text text-lighten-4 right" href="https://hackonnect.squarespace.com">Official Website</a>
+                </div>
+            </div>
+        </footer>
+
+        <!-- Scripts -->
+        <script src="js/jquery-3.3.1.min.js"></script>
+        <script src="js/materialize.min.js"></script>
+        <script src="js/main.js"></script>
+    </body>
+</html>

@@ -1,0 +1,69 @@
+@import "materialize.scss"
+
+$small-screen-up: 600px !default
+$medium-screen-up: 992px !default
+$large-screen-up: 1200px !default
+$small-screen: 600px !default
+$medium-screen: 992px !default
+$large-screen: 1200px !default
+
+$medium-and-up: "only screen and (min-width : #{$small-screen-up})" !default
+$large-and-up: "only screen and (min-width : #{$medium-screen-up})" !default
+$extra-large-and-up: "only screen and (min-width : #{$large-screen-up})" !default
+$small-and-down: "only screen and (max-width : #{$small-screen})" !default
+$medium-and-down: "only screen and (max-width : #{$medium-screen})" !default
+$medium-only: "only screen and (min-width : #{$small-screen-up}) and (max-width : #{$medium-screen})" !default
+    
+body
+    overflow-x: hidden
+    word-wrap: break-word
+    @extend .blue, .lighten-4
+
+.centered
+    text-align: center
+
+.logo
+    @media #{$small-and-down}
+        height: 56px
+    @media #{$medium-and-up}
+        height: 63px
+
+.card
+    @extend .centered
+    width: 100%
+    .card-title
+        font-weight: bold
+
+.intro-card
+    @media #{$small-and-down}
+        padding: 5px
+        p
+            text-align: justify
+    @media #{$medium-only}
+        padding: 3px
+        height: 310px
+        p
+            text-align: justify
+    @media #{$large-and-up}
+        padding: 5px
+        height: 365px
+        p
+            text-align: justify
+
+.img-card
+    @media #{$medium-only}
+        height: 340px
+    @media #{$large-and-up}
+        height: 365px
+    img
+        width: 100%
+        @media #{$medium-only}
+            padding-left: 10%
+            width: 90%
+        @media #{$large-and-up}
+            padding-top: 10%
+
+.course-card
+    padding: 5px
+    p
+        text-align: justify
