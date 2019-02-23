@@ -9,7 +9,7 @@
         <link type="text/css" rel="stylesheet" href="css/style.css"  media="screen, projection">
 
         <link rel="icon" type="image/x-icon" href="favicon.ico">
-        <title>Microbit Course</title>
+        <title>Web Scraping Course</title>
     </head>
     <body>
         <!-- Navbar -->
@@ -169,9 +169,98 @@ print(soup.find_all(attrs={'name': 'h1', 'id': 'h1'}))
                 </div>
                 <div class="course-card card white container">
                     <span class="card-title">Nested Elements</span>
+                    <p>Now let's look at another webpage for us to learn how to navigate through nested elements. Have a look <a href="https://hackonnect.github.io/scrape2">here</a> and inspect the hierarchical structure of the divs. Open up a new document and save the soup of the HTML as a soup variable:</p>
+                    <pre class="prettyprint linenums">
+from bs4 import BeautifulSoup
+import requests
+
+website = requests.get('https://hackonnect.github.io/scrape2')
+soup = BeautifulSoup(website.content, 'html.parser')
+                    </pre>
+                    <p>Let's look at a shortcut of how we can find all the divs with a class of "sibling":</p>
+                    <pre class="prettyprint linenums">
+print(soup.find_all('div', 'sibling'))
+                    </pre>
+                    <p>We simply put the name of the class after the HTML element tag name. In order to navigate the hierarchical structure of the divs better, let's save the parent div encompassing everything as a new variable called "parent".</p>
+                    <pre class="prettyprint linenums">
+parent = soup.div
+                    </pre>
+                    <p>We are able to list out all the children of this parent div using div.contents. Contents gives us everything that is inside the parent div. We can save all the contents in a variable called "children".</p>
+                    <pre class="prettyprint linenums">
+children = parent.contents
+                    </pre>
+                    <p>As you can see, we have successfully saved all the child divs in a variable. This variable has the same type as "soup" and "parent": it's still a soup. Soup is a hierarchical and recursive structure that consists of itself. To find the amount of children the parent div has, we can simply find the length of children:</p>
+                    <pre class="prettyprint linenums">
+print(len(children))
+                    </pre>
+                    <p>We get an answer of 9. However, if you navigate back to the page we are using, we can only count 4 orange divs! To get a better understanding of why this is the case, let's print out children and see what it actually contains.</p>
+                    <pre class="prettyprint linenums">
+print(children)
+                    </pre>
+                    <p>In the printed output, we can see a lot of '\n's. These are line break characters, showing us where in the HTML is there a new line. Unfortunately, they are not particularly useful to us and should be removed. As a quick exercise, try to remove all of the line breaks from children. See Exercise 2 for a solution. If you run the following code afterwards, the output should be 4:</p>
+                    <pre class="prettyprint linenums">
+print(len(children))
+                    </pre>
+                    <p>To find the parent of each child div, we can simply append .parent onto the end of the child. Here is an example of how it works:</p>
+                    <pre class="prettyprint linenums">
+print(children[0].parent)
+                    </pre>
+                    <p>Apart from navigating up and down the hierarchical structure, we can also find siblings of a particular div. Let's try using next_sibling in order to find the next sibling:</p>
+                    <pre class="prettyprint linenums">
+for child in children:
+&emsp;&emsp;print(child.next_sibling)
+                    </pre>
+                    <p>This is not what we are expecting is it? This is because .next_sibling only works on BeautifulSoup objects. Earlier on when we made the children variable, we used parent.contents to give us a list of strings of HTML elements. In order to get a generator containing BeautifulSoup objects, we need to use parent.children. Here's what we mean:</p>
+                    <pre class="prettyprint linenums">
+children = parent.children # Remember that we did not filter out any of the empty  this time.
+print(children)
+for child in children:
+&emsp;&emsp;print(child.next_sibling)
+                    </pre>
+                    <p>Now this gives us our intended outcome. If we want a generator containing BeautifulSoup objects of the next siblings, we can use .next_siblings. Remember that if you use things that return generators such as .children, the result you get is NOT a list. It's a list_iterator / generator that should only be used for iteration.</p>
+                    <pre class="prettyprint linenums">
+for next_sibling in parent.div.next_siblings:
+&emsp;&emsp;print('I\'m another sibling!')
+                    </pre>
+                    <p>This concept is slightly harder to grasp therefore we have a separate page explaining many of the concepts introduced in our courses <a href="concepts.html">here</a>. Scroll down to the section where it talks about iteration and generators.</p>
+                    <p>Have a few minutes to mess around with moving through the hierarchical and nested structure.</p>
                 </div>
                 <div class="course-card card white container">
                     <span class="card-title">HTML Selectors</span>
+                    <p>Now that we are equipped with the knowledge of navigating nested HTML structures, let's look at some of the HTML selectors we can use while web scraping. Once again, let's explore the structure of <a href="https://hackonnect.github.io/scrape3.html">this website</a>.</p>
+                    <pre class="prettyprint linenums">
+from bs4 import BeautifulSoup
+import requests
+
+website = requests.get('https://hackonnect.github.io/scrape3')
+soup = BeautifulSoup(website.content, 'html.parser')
+                    </pre>
+                    <p>Sometimes, we need to find the third, fourth, seventh or even forty-second element. To do this, we need to first know how CSS selectors work with BeautifulSoup. We can use select() in order to select HTML elements using CSS selectors. The following code does the exact same thing as soup.find_all('p'), except it uses CSS selectors. If possible, always use find_all() as it is significantly faster.</p>
+                    <pre class="prettyprint linenums">
+print(soup.select('p'))                
+                    </pre>
+                    <p>Here are a few CSS selectors that you might need to know:</p>
+                    <p>Selecting every p inside a div:</p>
+                    <pre class="prettyprint linenums">
+print(soup.select('div p'))
+                    </pre>
+                    <p>Selecting every p that is directly under a div:</p>
+                    <pre class="prettyprint linenums">
+print(soup.select('div > p'))
+                    </pre>
+                    <p>Finding everything with a class of example:</p>
+                    <pre class="prettyprint linenums">
+print(soup.select('.example'))
+                    </pre>
+                    <p>Finding the third p:</p>
+                    <pre class="prettyprint linenums">
+print(soup.select('p:nth-of-type(3)'))
+                    </pre>
+                    <p>Similar to how find_all() has a counterpart in find(), select() has a counterpart that only selects the first element that meets the criterion called select_one():</p>
+                    <pre class="prettyprint linenums">
+print(soup.select_one('p:nth-of-type(3)'))
+                    </pre>
+                    <p>Now, go ahead and attempt to solve Exercise 3.</p>
                 </div>
             </div>
         </div>
@@ -187,6 +276,20 @@ print(soup.find_all(attrs={'name': 'h1', 'id': 'h1'}))
                     <span class="card-title">Exercise 1</span>
                     <p>1. Find the class of the last paragraph on <a href="https://hackonnect.github.io/scrape1">this page</a> (this is the same page used in the BeautifulSoup section of the course).</p>
                     <p>2. There's actually a hidden paragraph with an id of "hidden" on the same page! Find out what it says.</p>
+                </div>
+                <div class="course-card card white container">
+                    <span class="card-title">Exercise 2</span>
+                    <p>Exercise 2 is located within the Nested Structures section of the course. There are many different ways you can remove all the line breaks, including iterating through the soup structure and removing anything that is equivalent to '\n'. Here is a short solution with an extremely similar effect:</p>
+                    <pre class="prettyprint linenums">
+children = list(filter(lambda x: x != '\n', children))</pre>
+                </div>
+                <div class="course-card card white container">
+                    <span class="card-title">Exercise 3</span>
+                    <p> Wikipedia is one of our most used websites. Whether you'd like to admit it or not, we all use Wikipedia to get information. Let's say we want to get the standard atomic weight of every single element. Using Wikipedia and BeautifulSoup, we can easily retrieve this information. Try to do it on your own before asking for help. You might not have enough time to finish it. Have fun! Feel free to carry on working on this in your free time. Computer Science can be fun!</p>
+                    <p><b>Hints:</b></p>
+                    <p>Try to look for a webpage that has the all the values you need.</p>
+                    <p>Use inspect element to find the correct element.</p>
+                    <p>You might want to loop through something several times.</p>
                 </div>
             </div>
         </div>
