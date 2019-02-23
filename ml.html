@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link type="text/css" rel="stylesheet" href="css/desert.css">
+        <link type="text/css" rel="stylesheet" href="css/materialize.css"  media="screen, projection">
+        <link type="text/css" rel="stylesheet" href="css/style.css"  media="screen, projection">
+
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
+        <title>Machine Learning Course</title>
+    </head>
+    <body>
+        <!-- Navbar -->
+        <div class="navbar-fixed">
+            <nav class="purple lighten-1">
+                <div class="nav-wrapper container">
+                    <a href="#!" data-target="mobile-nav" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+                    <a href="#!" class="brand-logo"><div class="row"><div class="col s12 m3"><img src="media/logo.png" class="logo"></div><div class="col m9 hide-on-small-and-down">&nbsp;Hackonnect</div></div></a>
+                    <ul class="right hide-on-med-and-down">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a class="dropdown-trigger" href="#!" data-target="courses-dropdown">Course Resources<i class="material-icons right">arrow_drop_down</i></a></li>
+                        <ul id="courses-dropdown" class="dropdown-content">
+                            <li><a href="microbit.html">Microbit</a></li>
+                            <li><a href="web.html">Web Scraping</a></li>
+                            <li><a href="api.html">APIs</a></li>
+                            <li><a href="ml.html">Machine Learning</a></li>
+                        </ul>
+                        <li><a href="https://hackonnect.squarespace.com">Official Website</a></li>
+                        <li><a href="https://www.github.com/hackonnect">GitHub</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div> 
+        <ul id="mobile-nav" class="sidenav">
+            <li><a href="index.html">Home</a></li>
+            <li><div class="divider"></div></li>
+            <li><a class="subheader">Courses</a></li>
+            <li><a href="microbit.html">Microbit</a></li>
+            <li><a href="web.html">Web Scraping</a></li>
+            <li><a href="api.html">API</a></li>
+            <li><a href="ml.html">Machine Learning</a></li>
+            <li><div class="divider"></div></li>
+            <li><a href="https://hackonnect.squarespace.com">Official Website</a></li>
+            <li><a href="https://www.github.com/hackonnect">GitHub</a></li>
+        </ul>
+
+        <!-- Intro -->
+        <div class="container row">
+            <div class="col s12">
+                <div class="course-card card white container">
+                    <span class="card-title">APIs Course</span>
+                    <p>APIs, or Application Programming Interfaces, are very common nowadays. In fact, there are APIs for nearly everything from checking the weather today to looking up stock prices to viewing your latest video game match results. In this course, we will learn how to use APIs through looking at the different possible requests and be able to setup our own APIs for others to interface with.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Setup -->
+        <div class="row z-depth-1 purple lighten-3 banner">
+            <h1 class="centered white-text">Installation and Setup</h1>
+        </div>
+
+        <div class="container row">
+            <div class="col s12">
+                <div class="course-card card white container installation">
+                    <span class="card-title">Installation Instructions</span>
+                    <p>Installing <a href="https://www.makeuseof.com/tag/install-pip-for-python/">pip</a>. Please scroll down to your relevant operating system.</p>
+                    <p>Run "pip install flask flask_restful" in your terminal (PowerShell on Windows, Terminal on macOS and if you are using another operating system you probably know what you are doing).</p>
+                    <p>Download <a href="https://raw.githubusercontent.com/hackonnect/ml-course/master/student_performance.csv">this file</a> and place it in your working directory.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Content -->
+        <div class="row z-depth-1 purple lighten-3 banner">
+            <h1 class="centered white-text">Course Content</h1>
+        </div>
+
+        <div class="container row">
+            <div class="col s12">
+                <div class="course-card card white container">
+                    <span class="card-title">The Intuition Behind Machine Learning</span>
+                </div>
+                <div class="course-card card white container">
+                    <span class="card-title">Preliminary Data Processing</span>
+                    <p>To import and process our data, we will be using pandas. Pandas is a very comprehensive library that can do a lot of different things, but we'll only use pandas for its dataframes. For our purposes, dataframes are pretty much identical to two-dimensional arrays. Let's import it first.</p>
+                    <pre class="prettyprint linenums">
+import pandas as pd
+                    </pre>
+                    <p>Now, let's import the dataset and save it as a dataframe variable. The dataset we will be using is a fictional dataset of student profiles and their grades. We are using this fictional dataset as it is complete and a good starting point for us to learn about machine learning.</p>
+                    <pre class="prettyprint linenums">
+dataframe = pd.read_csv(r'student_performance.csv')
+print(dataframe)
+                    </pre>
+                    <p>We can retrieve individual columns by indexing them:</p>
+                    <pre class="prettyprint linenums">
+print(dataframe['gender'])
+                    </pre>
+                    <p>As a quick exercise, try to find the amount of students that are female.</p>
+                    <p>For our machine learning model, we cannot use qualitative data. The computer simply is not smart enough to understand words such as male and female. Your course instructor should now explain how we can turn these types of data to qualitative data.</p>
+                    <p>Now, let's create a new dataframe in order to store the processed data:</p>
+                    <pre class="prettyprint linenums">
+columns = [
+&emsp;&emsp;gender',
+&emsp;&emsp;'A',
+&emsp;&emsp;'B',
+&emsp;&emsp;'C',
+&emsp;&emsp;'D',
+&emsp;&emsp;'E',
+&emsp;&emsp;'education',
+&emsp;&emsp;'lunch',
+&emsp;&emsp;'preparation',
+&emsp;&emsp;'score'
+]
+
+df = pd.DataFrame(0, index = list(range(1000)), columns = columns)
+                    </pre>
+                    <p>As an exercise, attempt to process the columns yourself. For example, you can set the new gender column like this:</p>
+                    <pre class="prettyprint linenums">
+for index, gender in enumerate(dataframe['gender']):
+&emsp;if gender == 'female':
+&emsp;&emsp;df['gender'][index] = 1
+&emsp;else:
+df['gender'][index] = 0
+                    </pre>
+                    <p>Let's check our new dataframe "df" to see if we have done it correctly:</p>
+                    <pre class="prettyprint linenums">
+print(df)
+                    </pre>
+                    <p>Now, attempt to process the other rows yourself! You can find two examples of solutions at the bottom of this page.</p>
+                    <p>Once you have finished processing your data, we can save it as a csv file like this:</p>
+                    <pre class="prettyprint linenums">
+df.to_csv('df.csv')
+                    </pre>
+                </div>
+                <div class="course-card card white container">
+                    <span class="card-title">Creating Machine Learning Models</span>
+                    <p>Because we have opened up a new file, we need to import the pandas library again and retrieve the data we saved as "df.csv":</p>
+                    <pre class="prettyprint linenums">
+import pandas as pd
+
+df = pd.read_csv(r'df.csv')
+                    </pre>
+                    <p>As mentioned previously, machine learning relies on training on datasets. Datasets are split into features (our input) and the result. We will save the features in a dataframe called X and the results in one called y.</p>
+                    <p>Let's just check what df is like again:</p>
+                    <pre class="prettyprint linenums">
+print(df)
+                    </pre>
+                    <p>Okay, so we have this new column called 'Unnamed: 0'. This appeared because when we saved our panda dataframe, indices were assigned. We do not actually need these indices so we can drop this column when splitting our dataframe into X and y. We can use drop() in order to drop the columns. Specifying that axis = 1 means that we want to drop columns, not rows:</p>
+                    <pre class="prettyprint linenums">
+X = df.drop(['Unnamed: 0', 'score'], axis = 1)
+y = df['score']
+                    </pre>
+                    <p>We will be using the scikit-learn library for everything machine learning related. First, we will need to import the functions from this library we will be using:</p>
+                    <pre class="prettyprint linenums">
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LinearRegression
+                    </pre>
+                    <p>Now let's split X and y into training and testing datasets. Your course instructor should explain the difference between these two concepts. You can also read about it yourself <a href="concepts.html">here</a>.</p>
+                    <pre class="prettyprint linenums">
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.25)
+                    </pre>
+                    <p>Now, let's create our linear regression model and train our dataset. For more information about linear regression please visit the link in the previous paragraph.</p>
+                    <pre class="prettyprint linenums">
+model = LinearRegression()
+model.fit(X_train, y_train)
+                    </pre>
+                    <p>In order to predict the test score from features, we can use model.predict():</p>
+                    <pre class="prettyprint linenums">
+y_predict = model.predict(X_test)
+                    </pre>
+                    <p>There are many different ways we can see how good our predictions are. Try to find the average difference between the predicted and actual values. Scroll to the bottom of the page for a solution.</p>
+                    <p>We can also predict a single result. Because model.predict() only takes two-dimensional data structures as input, we need to use double square brackets when we are predicting the result for a single entry:</p>
+                    <pre class="prettyprint linenums">
+print(model.predict([[0,0,0,1,0,0,4,0,1]]))
+                    </pre>
+                    <p>So our model is pretty good, predicting within 30 marks of the actual score consistently. To make sure that we do not have to retrain our model everytime we run our program, let's save our model.</p>
+                    <pre class="prettyprint linenums">
+import pickle
+filename = 'model'
+with open(filename, 'wb') as handle:
+&emsp;&emsp;pickle.dump(model, handle)                        
+                    </pre>
+                    <p>This saves our model in a file called "model" in the current directory. We can import the model back like this:</p>
+                    <pre class="prettyprint linenums">
+with open(filename, 'rb') as handle:
+&emsp;&emsp;model_from_file = pickle.load(handle)
+
+print(model_from_file.predict([[0,0,0,1,0,0,4,0,1]])) # This should be the same as your previous result.
+                    </pre>
+                    <p>Now, you can load your model in multiple files. Scroll to the bottom of the page for Exercise 3.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Exercises -->
+        <div class="row z-depth-1 purple lighten-3 banner">
+            <h1 class="centered white-text">Exercises</h1>
+        </div>
+
+        <div class="container row">
+            <div class="col s12">
+                <div class="course-card card white container">
+                    <span class="card-title">Exercise 1</span>
+                    <p>Here are 2 solutions for data processing:</p>
+                    <pre class="prettyprint linenums">
+education_values = {
+&emsp;&emsp;'high school': 1,
+&emsp;&emsp;'some high school': 1,
+&emsp;&emsp;'associate\'s degree': 2,
+&emsp;&emsp;'some college': 3,
+&emsp;&emsp;'bachelor\'s degree': 3,
+&emsp;&emsp;'master\'s degree': 4
+}
+for i in range(1000):
+&emsp;&emsp;df['gender'][i] = int(dataframe['gender'][i] == 'female')
+&emsp;&emsp;df[dataframe['race/ethnicity'][i][-1]][i] = 1
+&emsp;&emsp;df['education'][i] = education_values[dataframe['parental level of education'][i]]
+&emsp;&emsp;df['lunch'][i] = int(dataframe['lunch'][i] == 'standard')
+&emsp;&emsp;df['preparation'][i] = int(dataframe['test preparation course'][i] == 'standard')
+&emsp;&emsp;df['score'][i] = dataframe['math score'][i] + dataframe['reading score'][i] + dataframe['writing score'][i]
+df.to_csv('df.csv')
+                    </pre>
+                    <pre class="prettyprint linenums">
+education_values = {
+&emsp;&emsp;'high school': 1,
+&emsp;&emsp;'some high school': 1,
+&emsp;&emsp;'associate\'s degree': 2,
+&emsp;&emsp;'some college': 3,
+&emsp;&emsp;'bachelor\'s degree': 3,
+&emsp;&emsp;'master\'s degree': 4
+}
+ethnicity_values = {
+&emsp;&emsp;'group A': 0,
+&emsp;&emsp;'group B': 1,
+&emsp;&emsp;'group C': 2,
+&emsp;&emsp;'group D': 3,
+&emsp;&emsp;'group E': 4
+}
+df['gender'] = dataframe['gender'].replace({'male': 0, 'female': 1})
+ethnicity_columns = pd.get_dummies(dataframe['race/ethnicity'].replace(ethnicity_values))
+for i in range(5):
+&emsp;&emsp;df['ABCDE'[i]] = ethnicity_columns[i]
+df['education'] = dataframe['parental level of education'].replace(education_values)
+df['lunch'] = dataframe['lunch'].replace({'free/reduced': 0, 'standard': 1})
+df['preparation'] = dataframe['test preparation course'].replace({'none': 0, 'completed': 1})
+df['score'] = dataframe['math score'] + dataframe['reading score'] + dataframe['writing score']
+df.to_csv('df.csv')
+                    </pre>
+                </div>
+                <div class="course-card card white container">
+                    <span class="card-title">Exercise 2</span>
+                    <p>Here is the solution for finding the average difference:</p>
+                    <pre class="prettyprint linenums">
+print(sum(abs(y_predict - y_test)) / len(y_predict))
+                    </pre>
+                </div>
+                <div class="course-card card white container">
+                    <span class="card-title">Exercise 3</span>
+                    <p>Try to build a console application that lets people input their information and predict their total score.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="page-footer purple lighten-1">
+            <div class="footer-copyright purple lighten-1">
+                <div class="container">
+                    © 2019 Hackonnect. All rights reserved.
+                    <a class="grey-text text-lighten-4 right" href="https://hackonnect.squarespace.com">Official Website</a>
+                </div>
+            </div>
+        </footer>
+
+        <!-- Scripts -->
+        <script src="js/jquery-3.3.1.min.js"></script>
+        <script src="js/materialize.min.js"></script>
+        <script src="js/prettify.js"></script>
+        <script src="js/main.js"></script>
+    </body>
+</html>

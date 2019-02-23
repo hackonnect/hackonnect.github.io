@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link type="text/css" rel="stylesheet" href="css/desert.css">
+        <link type="text/css" rel="stylesheet" href="css/materialize.css"  media="screen, projection">
+        <link type="text/css" rel="stylesheet" href="css/style.css"  media="screen, projection">
+
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
+        <title>API Course</title>
+    </head>
+    <body>
+        <!-- Navbar -->
+        <div class="navbar-fixed">
+            <nav class="purple lighten-1">
+                <div class="nav-wrapper container">
+                    <a href="#!" data-target="mobile-nav" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+                    <a href="#!" class="brand-logo"><div class="row"><div class="col s12 m3"><img src="media/logo.png" class="logo"></div><div class="col m9 hide-on-small-and-down">&nbsp;Hackonnect</div></div></a>
+                    <ul class="right hide-on-med-and-down">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a class="dropdown-trigger" href="#!" data-target="courses-dropdown">Course Resources<i class="material-icons right">arrow_drop_down</i></a></li>
+                        <ul id="courses-dropdown" class="dropdown-content">
+                            <li><a href="microbit.html">Microbit</a></li>
+                            <li><a href="web.html">Web Scraping</a></li>
+                            <li><a href="api.html">APIs</a></li>
+                            <li><a href="ml.html">Machine Learning</a></li>
+                        </ul>
+                        <li><a href="https://hackonnect.squarespace.com">Official Website</a></li>
+                        <li><a href="https://www.github.com/hackonnect">GitHub</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div> 
+        <ul id="mobile-nav" class="sidenav">
+            <li><a href="index.html">Home</a></li>
+            <li><div class="divider"></div></li>
+            <li><a class="subheader">Courses</a></li>
+            <li><a href="microbit.html">Microbit</a></li>
+            <li><a href="web.html">Web Scraping</a></li>
+            <li><a href="api.html">API</a></li>
+            <li><a href="ml.html">Machine Learning</a></li>
+            <li><div class="divider"></div></li>
+            <li><a href="https://hackonnect.squarespace.com">Official Website</a></li>
+            <li><a href="https://www.github.com/hackonnect">GitHub</a></li>
+        </ul>
+
+        <!-- Intro -->
+        <div class="container row">
+            <div class="col s12">
+                <div class="course-card card white container">
+                    <span class="card-title">APIs Course</span>
+                    <p>APIs, or Application Programming Interfaces, are very common nowadays. In fact, there are APIs for nearly everything from checking the weather today to looking up stock prices to viewing your latest video game match results. In this course, we will learn how to use APIs through looking at the different possible requests and be able to setup our own APIs for others to interface with.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Setup -->
+        <div class="row z-depth-1 purple lighten-3 banner">
+            <h1 class="centered white-text">Installation and Setup</h1>
+        </div>
+
+        <div class="container row">
+            <div class="col s12">
+                <div class="course-card card white container installation">
+                    <span class="card-title">Installation Instructions</span>
+                    <p>Installing <a href="https://www.makeuseof.com/tag/install-pip-for-python/">pip</a>. Please scroll down to your relevant operating system.</p>
+                    <p>Run "pip install flask flask_restful" in your terminal (PowerShell on Windows, Terminal on macOS and if you are using another operating system you probably know what you are doing).</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Content -->
+        <div class="row z-depth-1 purple lighten-3 banner">
+            <h1 class="centered white-text">Course Content</h1>
+        </div>
+
+        <div class="container row">
+            <div class="col s12">
+                <div class="course-card card white container">
+                    <span class="card-title">Requests</span>
+                    <p>APIs, or Application Programming Interfaces, are a way to let people interact with an online database. APIs are extremely important in the transfer of data and connecting different devices together using a central server. To start with, we will show you how APIs work using a simple practice API <a href="https://hackonnect-api.herokuapp.com">here</a>. As you might be able to see, our database has two columns: a data key column and a value column. Currently, there are only 3 entries, data1, data2 and data3. Many APIs might have interfaces like this to let you see its contents. However, some don't, and even if they do, displaying the information like this is slightly annoying for us to deal with. In Python, there is a requests library that we can use in order for us to request data from APIs.</p>
+                    <p>There are 4 methods we will mainly use to interact with APIs, GET, POST, PUT and DELETE. We will go into a bit more detail about what each of these APIs really mean in a moment. Out of these four, GET requests are the most important, as many APIs only allow you to retrieve information and do not allow people to modify their database easily for obvious reasons.</p>
+                    <pre class="prettyprint linenums">
+from requests import get, post, put, delete
+                    </pre>
+                    <p>The GET method requests data from a database. Using the URL for GET requests, we are able to retrieve all the entries of our practice database. Bear in mind that our practice API is very simple and real APIs will be slightly more complicated. Different APIs will have different URLs for different methods. It is important to read the API documentation when using them. We'll have a practice at this later on. Our practice API is very simple: there is only one URL for us to worry about, which is the website URL + /api. We can call different methods on this URL to get different results. Because we will be using our URL a lot, let's save it as a variable.</p>
+                    <pre class="prettyprint linenums">
+url = 'https://hackonnect-api.herokuapp.com/api'
+                    </pre>
+                    <p>Let's see what the response for our GET request is:</p>
+                    <pre class="prettyprint linenums">
+print(get(url))
+                    </pre>
+                    <p>The printed result was "&lt;Response 200&gt;". When you are browsing the Internet, you may have encountered response codes like 404, 502 or 503. There are all different HTTP response codes that mean different things. For example, 404 usually indicates that the resource you are looking for does not exist. You rarely see 200 because it indicates a successful HTTP request. For us to get the content of this response, we need to add .json() to the end of our get request:</p>
+                    <pre class="prettyprint linenums">
+print(get(url).json())
+                    </pre>
+                    <p>Sometimes, we don't want the entire database, just the value of a particular entry. Let's say we want the value of "data1". There are two ways to do this:</p>
+                    <pre class="prettyprint linenums">
+print(get(url, data={'key': 'data1'}).json())                        
+print(get(url + '?key=data1').json())
+                    </pre>
+                    <p>Both methods yield the same result, but the second oen is preferred because of it's simplicity. The url becomes <a href="https://hackonnect-api.herokuapp.com/api?key=data1">https://hackonnect-api.herokuapp.com/api?key=data1</a>. If you visit this link with your browser, you should see some sort of visualisation of the JSON data that was returned. The part after the question mark is called the query string, and has this format: ?parameter1=value&amp;parameter2=value&amp;parameter3=value... You might have seen query strings when you search up something on a search engine. You can find more information about query strings <a href="concepts.html">here</a>. As you can see, we can pass a dictionary as the data with our GET request, specifying which key we wanted to retrieve. The data we passed are called the 'parameters' of our request. The parameter name in this case is key, with a parameter value of data1. Our API only accepts two types of parameters: key and value. This is because of the simplicity of our API. When we work with an actual API later on, we'll look at how we can use parameters to filter data. Try to retrieve the values of other data entries yourself. Once you are done with that, try to retrive the value of "data4" - what happens?</p>
+                    <p>When you try to get something that doesn't exist you will get an error. Now let's try adding data4 into the database so that it works. To do this, we will use a POST request. This method requests the server to accept the information that was sent along as a new entry. Usually, we use POST requests in order to create a new entry (URI, universal resource identifier) in database.</p>
+                    <pre class="prettyprint linenums">
+post(url + '?key=data4&value=value4')
+                    </pre>
+                    <p>Now, when the page reloads, you can see that the database has updated! We can try retrieving data4 again using a GET request:</p>
+                    <pre class="prettyprint linenums">
+print(get(url + '?key=data4').json())
+                    </pre>
+                    <p>When we try to POST a resource that already exists in the database, we get an error:</p>
+                    <pre class="prettyprint linenums">
+print(post(url + '?key=data4&value=value4').json())
+                    </pre>
+                    <p>Our practice API automatically sees if the value is already there and rejects new POST requests. Try to use the POST request to add different resources to our database.</p>
+                    <p>What if we need to modify resource values in the database? This is when PUT requests come in. PUT requests tell the server to store the attached information in an existing URI. In most APIs, PUT requests can also be used to add new URIs, but we have prevented that in our practice API so that you know the difference between POST and PUT requests. If you want to know more about the details between POST and PUT requests, please visit <a href="concepts.html">this page.</a></p>
+                    <pre class="prettyprint linenums">
+put(url + '?key=data1&value=new value!')
+                    </pre>
+                    <p>Finally, we can use the DELETE method in order to delete entries.</p>
+                    <pre class="prettyprint linenums">
+delete(url + '?key=data1')
+                    </pre>
+                    <p>If you reload the page now, you can see that the first entry has now disappeared. When you try to delete a non-existent entry, you will get an error:</p>
+                    <pre class="prettyprint linenums">
+print(delete(url + '?key=a key that is not there!'))
+                    </pre>
+                    <p>Spend a moment playing around with these request methods before we move on to practicing requesting from actual APIs.</p>
+                </div>
+                <div class="course-card card white container">
+                    <span class="card-title">Using an API</span>
+                    <p>Now that we know how API requests work, let's try to use an actual API. The API we will be using is the weather API provided by the US government. We have chosen to use this API because you are able to use it without signing up and obtaining an API key. Many API services require you to create an account and use an API key to access their APIs to prevent bots from overloading their servers with a lot of requests. We are only going to be using GET requests here.</p>
+                    <pre class="prettyprint linenums">
+from requests import get
+                    </pre>
+                    <p>Visit the <a href="https://www.weather.gov/documentation/services-web-api">API</a> and click on specification to see their API documentation. Your course instructor will guide you through how we can read through the API documentation. Their api is located at <a href="https://api.weather.gov/">https://api.weather.gov/</a>, so let's set that as a variable. Make sure to include the backslash:</p>
+                    <pre class="prettyprint linenums">
+api = 'https://api.weather.gov/'
+                    </pre>
+                    <p>Let's check that the API has been entered correctly.</p>
+                    <pre class="prettyprint linenums">
+print(get(api).json())
+                    </pre>
+                    <p>If you get any response other than "{'status': 'OK'}", please check if you have entered the API URL correctly. Now that you have a solid grasp of how the API works through reading the documentation, let's attempt to get all the alerts:</p>
+                    <pre class="prettyprint linenums">
+print(get(api + 'alerts'))
+                    </pre>
+                    <p>That is a lot of alerts we have to look through. We can use different parameters to filter through this:</p>
+                    <pre class="prettyprint linenums">
+print(get(api + 'alerts?status=500').json())
+print(get(api + 'alerts?event=Test Message').json())
+                    </pre>
+                    <p>Try to use a query string in order to find all the active alerts in New York (if any) as a quick exercise. Of course, this information is still suboptimal because it's hard for us to understand the result. Whenever we use an API, we need to slowly parse through the result we get in order to fully understand the response we receive. Let's see the structure of our response:</p>
+                    <pre class="prettyprint linenums">
+alerts = get(api + 'alerts?active=true&area=NY').json()
+for alert in alerts.items():
+&emsp;&emsp;print(alert)
+                    </pre>
+                    <p>5 main components make up this response: @context, type, features, title and updated. Let's print out each component to see what they represent:</p>
+                    <pre class="prettyprint linenums">
+print(alerts['@context'])
+print(alerts['type'])
+print(alerts['features'])
+print(alerts['title'])
+print(alerts['updated'])
+                    </pre>
+                    <p>So, "features" is probably the component we need. Let's see everything hiding inside "features" after storing it as a variable:</p>
+                    <pre class="prettyprint linenums">
+features = alert['features']
+for feature in features:
+&emsp;&emsp;print(feature)
+                    </pre>
+                    <p>If we read this carefully, we can see that most of the content is stored under "properties". Let's make a new variable to store this:</p>
+                    <pre class="prettyprint linenums">
+properties = features[0]['properties'
+                    </pre>
+                    <p>Once again, we should go through each property one by one:</p>
+                    <pre class="prettyprint linenums">
+for prop in properties: # We're not using property because it's a Python keyword
+&emsp;&emsp;print(prop)
+                    </pre>
+                    <p>The "headline" and "description" is probably what we are looking for. Let us try to print them out:</p>
+                    <pre class="properties linenums">
+print(properties['headline'])
+print(properties['description'])
+                    </pre>
+                    <p>Now, navigate to Exercise 2 and Exercise 3.</p>
+                </div>
+                <div class="course-card card white container">
+                    <span class="card-title">Building an API</span>
+                    <p>Now let's try to build a very simple API which will be an imitation of the practice API we used earlier. For this, we will be using Flask and Flask_RESTful. Flask is a Python framework for making web applications and Flask_RESTful is a library that allows us to use Flask in order to make an API. Let's import the two libraries first:</p>
+                    <pre class="prettyprint linenums">
+from flask import Flask
+from flask_restful import Resource, Api, reqparse
+                    </pre>
+                    <p>We are now going to initialise our Flask application. The scope of what these objects do is out of this course but we will be using them to create our API.</p>
+                    <pre class="prettyprint linenums">
+app = Flask(__name__) # Flask app
+api = Api(app) # API
+parser = reqparse.RequestParser() # Parses (deals with) request parameters (remember those query strings?)
+                    </pre>
+                    <p>In order to keep everything simple, we will use a dictionary as our database:</p>
+                    <pre class="prettyprint linenums">
+database = {'data1': 'value1'}
+                    </pre>
+                    <p>Let's tell our parser what parameters (remember query strings?) we have. Our parameters will be "key" and "value":</p>
+                    <pre class="prettyprint linenums">
+parser.add_argument('key')
+parser.add_argument('value')
+                    </pre>
+                    <p>Now, we can define our API object. We will be implementing four functions related to this API. The following code will have inline comments to explain every line:</p>
+                    <pre class="prettyprint linenums">
+# Let's make an API Resource:
+class API(Resource):
+&emsp;&emsp;# Making the get request first:
+&emsp;&emsp;def get(self):
+&emsp;&emsp;&emsp;&emsp;args = parser.parse_args() # This parses the arguments and parameters (query strings and other data)
+&emsp;&emsp;&emsp;&emsp;key = args['key'] # See if there is a parameter named 'key'
+&emsp;&emsp;&emsp;&emsp;if key: # If there is
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;value = database['key'] # Find its value
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;result = {key: value} # This is what we will return.
+&emsp;&emsp;&emsp;&emsp;else:
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;result = database # If we don't get a particular key to search for, just return the whole database
+&emsp;&emsp;&emsp;&emsp;return result, 200 # Return the result along with a 200 status code (showing that the request was successful)
+&emsp;&emsp;
+&emsp;&emsp;# Let's make the post request:
+&emsp;&emsp;def post(self):
+&emsp;&emsp;&emsp;&emsp;args = parser.parse_args()
+&emsp;&emsp;&emsp;&emsp;key, value = args['key'], args['value'] # Save the key and value from the query string
+&emsp;&emsp;&emsp;&emsp;if key in database: # If the key is already in the database
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;error = {'error': 'Entry already exists.'} # Error message
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;return error, 404 # Return the error message along with a 404 error
+&emsp;&emsp;&emsp;&emsp;database[key] = value # Save the new entry
+&emsp;&emsp;&emsp;&emsp;return {key: value}, 201 # Return the saved key and value again, with a status code of 201 showing that the POST request was successful
+&emsp;&emsp;
+&emsp;&emsp;# Let's make the put request:
+&emsp;&emsp;def put(self):
+&emsp;&emsp;&emsp;&emsp;args = parser.parse_args()
+&emsp;&emsp;&emsp;&emsp;key, value = args['key'], args['value']
+&emsp;&emsp;&emsp;&emsp;if not key in database: # If the key does not exist
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;error = {'error': 'Entry does not exist.'}
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;return error, 404
+&emsp;&emsp;&emsp;&emsp;database[key] = value # Modify the original entry
+&emsp;&emsp;&emsp;&emsp;return {key: value}, 200 # Same as previous
+&emsp;&emsp;
+&emsp;&emsp;# As you can see, POST and PUT requests are actually very similar in implementation. They are only different because of manual restrictions.
+&emsp;&emsp;# The reason these manual restrictions exist is because of conventions of making a RESTful API.
+&emsp;&emsp;# Conventions are basically a set of rule everyone agrees on to keep things consistent.
+&emsp;&emsp;
+&emsp;&emsp;# Now let's make the delete request:
+&emsp;&emsp;def delete(self):
+&emsp;&emsp;&emsp;&emsp;args = parser.parse_args()
+&emsp;&emsp;&emsp;&emsp;key = args['key']
+&emsp;&emsp;&emsp;&emsp;if not key in database:
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;error = {'error': 'Entry does not exist.'}
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;return error, 404
+&emsp;&emsp;&emsp;&emsp;del database[key] # Delete the database entry with that specific key
+&emsp;&emsp;&emsp;&emsp;return database, 200 # Return the modified database
+
+api.add_resource(API, '/') # Add our API at the URL '/'
+# Now go to the terminal and run this file
+# With the Flask app still running in the terminal, open a new terminal and attempt to call the differetn request methods on your database.
+                    </pre>
+                    <p>To run this code, simply type flask run in the terminal you are using. Using the API methods we learnt earlier, try to interact with your database.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Exercises -->
+        <div class="row z-depth-1 purple lighten-3 banner">
+            <h1 class="centered white-text">Exercises</h1>
+        </div>
+
+        <div class="container row">
+            <div class="col s12">
+                <div class="course-card card white container">
+                    <span class="card-title">Exercise 1</span>
+                    <p>This exercise is integrated in the Using an API section. Here is the solution:</p>
+                    <pre class="prettyprint linenums">
+print(get(api + 'alerts?active=true&area=NY').json())
+                    </pre>
+                </div>
+                <div class="course-card card white container">
+                    <span class="card-title">Exercise 2</span>
+                    <p>With the knowledge about "alerts" you have just gained, try to print out all the active alerts' headlines and description.</p>
+                </div>
+                <div class="course-card card white container">
+                    <span class="card-title">Exercise 3</span>
+                    <p>Using the same API, try to make a dictionary that allows you to look up technical weather terms (in the glossary) and print out the definition.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="page-footer purple lighten-1">
+            <div class="footer-copyright purple lighten-1">
+                <div class="container">
+                    © 2019 Hackonnect. All rights reserved.
+                    <a class="grey-text text-lighten-4 right" href="https://hackonnect.squarespace.com">Official Website</a>
+                </div>
+            </div>
+        </footer>
+
+        <!-- Scripts -->
+        <script src="js/jquery-3.3.1.min.js"></script>
+        <script src="js/materialize.min.js"></script>
+        <script src="js/prettify.js"></script>
+        <script src="js/main.js"></script>
+    </body>
+</html>
