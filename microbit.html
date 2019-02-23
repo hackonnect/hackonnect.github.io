@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link type="text/css" rel="stylesheet" href="css/desert.css">
+        <link type="text/css" rel="stylesheet" href="css/materialize.css"  media="screen, projection">
+        <link type="text/css" rel="stylesheet" href="css/style.css"  media="screen, projection">
+
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
+        <title>Microbit Course</title>
+    </head>
+    <body>
+        <!-- Navbar -->
+        <div class="navbar-fixed">
+            <nav class="purple lighten-1">
+                <div class="nav-wrapper container">
+                    <a href="#!" data-target="mobile-nav" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+                    <a href="#!" class="brand-logo"><div class="row"><div class="col s12 m3"><img src="media/logo.png" class="logo"></div><div class="col m9 hide-on-small-and-down">&nbsp;Hackonnect</div></div></a>
+                    <ul class="right hide-on-med-and-down">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a class="dropdown-trigger" href="#!" data-target="courses-dropdown">Course Resources<i class="material-icons right">arrow_drop_down</i></a></li>
+                        <ul id="courses-dropdown" class="dropdown-content">
+                            <li><a href="microbit.html">Microbit</a></li>
+                            <li><a href="web.html">Web Scraping</a></li>
+                            <li><a href="api.html">APIs</a></li>
+                            <li><a href="ml.html">Machine Learning</a></li>
+                        </ul>
+                        <li><a href="https://hackonnect.squarespace.com">Official Website</a></li>
+                        <li><a href="https://www.github.com/hackonnect">GitHub</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <ul id="mobile-nav" class="sidenav">l
+            <li><a href="index.html">Home</a></li>
+            <li><div class="divider"></div></li>
+            <li><a class="subheader">Courses</a></li>
+            <li><a href="microbit.html">Microbit</a></li>
+            <li><a href="web.html">Web Scraping</a></li>
+            <li><a href="api.html">API</a></li>
+            <li><a href="ml.html">Machine Learning</a></li>
+            <li><div class="divider"></div></li>
+            <li><a href="https://hackonnect.squarespace.com">Official Website</a></li>
+            <li><a href="https://www.github.com/hackonnect">GitHub</a></li>
+        </ul>
+
+        <!-- Intro -->
+        <div class="container row">
+            <div class="col s12">
+                <div class="course-card card white container">
+                    <span class="card-title">Welcome to the Microbit Course</span>
+                    <p>The Internet of Things has dawned upon us, allowing different devices to connect and share information. This has led to a large rise in the use of embedded devices everywhere, from cars to door locks to traffic lights. In this course, we will use micro:bits to interact with the environment around us and connect devices together in order to create our own mini IoT.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Setup -->
+        <div class="row z-depth-1 purple lighten-3 banner">
+            <h1 class="centered white-text">Installation and Setup</h1>
+        </div>
+
+        <div class="container row">
+            <div class="col s12">
+                <div class="course-card card white container installation">
+                    <span class="card-title">Installation Instructions</span>
+                    <p>Installation for <a href="https://codewith.mu/en/howto/install_windows">Windows</a></p>
+                    <p>Installation for <a href="https://codewith.mu/en/howto/install_macos">macOS</a></p>
+                    <p>Installation using <a href="https://codewith.mu/en/howto/install_with_python">pip</a> for other systems</p>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Content -->
+        <div class="row z-depth-1 purple lighten-3 banner">
+            <h1 class="centered white-text">Course Content</h1>
+        </div>
+
+        <div class="container row">
+            <div class="col s12">
+                <div class="course-card card white container">
+                    <span class="card-title">What are Microbits?</span>
+                    <p>Microbits are tiny programmable computers that are very easy to setup and use properly. With many different types of sensors and possible outputs, microbits are very versatile and can be a great starting point for a hardware based group project!</p>
+                </div>
+                <div class="course-card card white container">
+                    <span class="card-title">Using LEDs</span>
+                    <p>We will first start our journey with microbits through learning how to use the LEDs located on the microbits. If you look carefully, you can see that the 25 LEDs are arranged to form a 5x5 grid.</p>
+                    <p>Let's meet the first function we will use to interact with the microbits: display.scroll()
+                    </p>
+                    <p>Before we start typing what message we want to scroll across the LEDs, we need to first import the microbit libraries that we have installed.</p>
+                    <pre class="prettyprint linenums">
+from microbits import *
+                    </pre>
+                    <p>Now, we can use the display.scroll() function in order to slowly scroll a message across the screen (remember to not delete the import line we added earlier):</p>
+                    <pre class="prettyprint linenums">
+from microbits import *
+
+display.scroll('I &lt;3 Hackonnect!')
+                    </pre>
+                    <p>Try to scroll different messages across the screen! Of course, scrolling messages can be useful, but sometimes we want to display images on the screen. Because there are only 25 LEDs the types of images we are able to display are slightly limited.</p>
+                    <p>First, let's look at how we can use prebuilt images given to us in the microbit library:</p>
+                    <pre class="prettyprint linenums">
+from microbits import *
+
+display.show(Image.HEART)
+sleep(2000)
+display.show(Image.SILLY)
+sleep(2000)
+display.show(Image.RABBIT)
+sleep(2000)
+display.clear()
+                    </pre>
+                    <p>There are three new functions we are using here, display.show(), display.clear() and sleep(). It's fairly obvious what these three functions do: one shows an image, one clears the image shown away from the LED screen and the last one puts the microbit to sleep for a certain amount of time. Do note that the number you put into sleep should be the time you want your microbit to sleep for in <b>milliseconds</b>. Try playing around with the prebuilt images; yu can find the entire list of prebuilt images <a href="https://microbit-micropython.readthedocs.io/en/latest/tutorials/images.html">here</a>.</p>
+                    <p>We can also make custom images to show on the 25 LEDs. As seen below, we will need to type out a 5x5 grid of numbers ourselves and save it in a variable. The numbers 0-9 indicates the brightness you want each LED to be at, with 9 being the brightest and 0 turning the LED off. Once we are done making the variable, we can use that variable as the argument of display.show() in order to show our custom image.</p>
+                    <pre class="prettyprint linenums">
+from microbits import *
+
+square = Image('99999:'
+&emsp;&emsp;'95559:'
+&emsp;&emsp;'95059:'
+&emsp;&emsp;'95559:'
+'99999')
+
+# You can also write this as the following, as long as you use a colon to separate each row
+
+square = Image('99999:95559:95059:95559:99999')
+display.show(square)
+sleep(2000)
+display.clear()
+                    </pre>
+                    <p>Displays do not have to be static either, we can have different animations that run on the microbit screens. To do this, simply use a list of images as the argument for display.show(). You can customise the delay between each image and indicate whether you want the animation to loop or not:</p>
+                    <pre class="prettyprint linenums">
+from microbits import *
+
+large_square = Image('99999:90009:90009:90009:99999')
+medium_square = Image('00000:09990:09090:09990:00000')
+small_square = Image('00000:00000:00900:00000:00000')
+square_list = [large_square, medium_square, small_square]
+display.show(square_list, loop=False, delay=1000)
+display.clear()
+                    </pre>
+                    <p>Sometimes, you don't want to change the entire LED screen; you only want to manipulate the brightness of one pixel. Luckily, you are also able to do this through using the display.set_pixel(x_coordinate, y_coordinate, brightness) function. The coordinates are 0 indexed, with the top-left-hand corner being (0, 0) and the bottom-right-hand corner being (4, 4). You can also get the brightness of a particular LED through using display.get_pixel(x_coordinate, y_coordinate).</p>
+                    <pre class="prettyprint linenums">
+from microbits import *
+
+display.set_pixel(0, 0, 7)
+sleep(1000)
+display.scroll(display.get_pixel(0, 0))                
+                    </pre>
+                </div>
+                <div class="course-card card white container">
+                    <span class="card-title">Microbit Buttons</span>
+                    <p>To the left and to the right of the LEDs, there are two buttons you can see. They are called button_a and button_b respectively. You can use the is_pressed() function in order to see if a button is being pressed. Because of how if statements work, when you need to see if both buttons are pressed, that has to be the first if statement as shown below:</p>
+                    <pre class="prettyprint linenums">
+from microbits import *
+
+while True:
+&emsp;&emsp;if button_a.is_pressed() and button_b.is_pressed():
+&emsp;&emsp;&emsp;&emsp;break
+&emsp;&emsp;elif button_a.is_pressed():
+&emsp;&emsp;&emsp;&emsp;display.show('A')
+&emsp;&emsp;elif button_b.is_pressed():
+&emsp;&emsp;&emsp;&emsp;display.show('B')
+&emsp;&emsp;else:
+&emsp;&emsp;&emsp;&emsp;display.show(Image.HAPPY)
+display.show(Image.SAD)
+sleep(2000)
+display.clear()
+                    </pre>
+                    <p>Another function that may come in handy is get_presses() that checks how many times the button was pressed while the microbit is asleep:</p>
+                    <pre class="prettyprint linenums">
+from microbits import *
+
+display.scroll('START!')
+sleep(5000)
+presses = button_a.get_presses() + button_b.get_presses()
+display.scroll(str(presses))
+                    </pre>
+                    <p>You can also see if the button was pressed while the microbit is asleep using was_pressed()</p>
+                    <pre class="prettyprint linenums">
+from microbits import *
+
+display.show('?')
+sleep(1000)
+if button_a.was_pressed():
+&emsp;&emsp;display.show(Image.HAPPY)
+else:
+&emsp;&emsp;display.show(Image.SAD)
+sleep(1000)
+display.clear()
+                    </pre>
+                </div>
+                <div class="course-card card white container">
+                    <span class="card-title">Sensors on the Microbit</span>
+                    <p>The microbit has various different sensors that we can use in our group projects. For example, we can get the surrounding temperature (in degrees Celsius) easily using the function temperature()</p>
+                    <pre class="prettyprint linenums">
+from microbits import *
+
+display.scroll(str(temperature()))
+                    </pre>
+                    <p>You can also see how long the microbit has been running in milliseconds using running_time()</p>
+                    <pre class="prettyprint linenums">
+from microbits import *
+
+sleep(2000)
+display.scroll(str(running_time()))
+                    </pre>
+                    <p>As you can see, the running_time() is slightly higher than 2000 milliseconds. This is because when the microbit runs each function, it takes a bit of time to process the instruction and understand how it will react. The microbit also has an accelerometer built in, allowing you to measure the force in milligrams between -+2000. Use accelerometer.get_x(), .get_y() and .get_z() (on the 3 different directions). You can also use get_values() to get all three values as once as a tuple. After you flash the program into the microbit, click on the REPL button. You will be able to see the three accelerometer values get printed constantly as you tilt your microbit around.</p>
+                    <pre class="prettyprint linenums">
+from microbits import *
+
+while not button_a.is_pressed() and not button_b.is_pressed():
+&emsp;&emsp;sleep(50)
+&emsp;&emsp;print(accelerometer.get_values())
+                    </pre>
+                    <p>Your microbit is also to recognise different types of gestures such as tilting to the left and shaking the microbit from these values:</p>
+                    <pre class="prettyprint linenums">
+from microbits import *
+
+while not button_a.is_pressed() and not button_b.is_pressed():
+&emsp;&emsp;sleep(100)
+&emsp;&emsp;print(accelerometer.current_gesture())
+                    </pre>
+                    <p>The available gestures are: up, down, left, right, face up, face down, free fall, 3g, 6g, 8g and shake. You can also use accelerometer.is_gesture(gesture_name), accelerometer.was_gesture(gesture_name) and accelerometer.get_gestures(), similar to what we did earlier with the buttons. Microbits can also act as a compass, measuring the magnetic field strength on the x, y and z axis. We can test this in a similar way to how we tested the accelerometer.</p>
+                    <pre class="prettyprint linenums">
+from microbits import *
+
+while not button_a.is_pressed() and not button_b.is_pressed():
+&emsp;&emsp;sleep(50)
+&emsp;&emsp;print(str(compass.get_x()) + ' ' + str(compass.get_y()) + ' ' + str(compass.get_z()))
+&emsp;&emsp;print(str(compass.get_field_strength())
+                    </pre>
+                    <p>To use these values as a compass however, we need to calibrate the compass first. Follow the instructions displayed on the microbit in order to calibrate the compass. Use compass.heading() to get the heading of the compass after you calibrate it. The program below gives you an example of how the compass could be used. The screen is refreshed every 100ms, or 0.1s. Through converting the angle (compass.heading()) to a specific clock hour, we can represent the directions through different clocks. Try it out yourself and see how it works.</p>
+                    <p></p>
+                    <pre class="prettyprint linenums">
+from microbits import *
+
+compass.calibrate()
+display.scroll('DONE!')
+while not button_a.is_pressed() and not button_b.is_pressed():
+&emsp;&emsp;sleep(100)
+&emsp;&emsp;clock = ((15 - compass.heading()) // 30) % 12
+&emsp;&emsp;display.show(Image.ALL_CLOCKS[clock])
+display.clear()
+                    </pre>
+                </div>
+                <div class="course-card card white container">
+                    <span class="card-title">Connecting Microbits using Radio</span>
+                    <p>Microbits don't need to act as separate entities. In fact, you can have different microbits communicating with each other using radio. Before we are able to use the radio function of microbits, we need to import and additional radio library:</p>
+                    <pre class="prettyprint linenums">
+from microbit import *
+import radio
+                    </pre>
+                    <p>First of all, the radio must be turned on in order for the microbit to send and receive any messages.</p>
+                    <pre class="prettyprint linenums">
+from microbit import *
+import radio
+
+radio.on()
+                    </pre>
+                    <p>As you might have guessed, you can also turn the radio off using radio.off(). There are many different ways you can configure the radio using radio.config(). The default settings are shown below:</p>
+                    <pre class="prettyprint linenums">
+radio.config(length=32, queue=3, channel=7, power=6, address=0x75626974, group=0, data_rate=radio.RATE_M1MBIT)</pre>
+                    <p>When setting up your radio, you really don't need to include everything in there. For more information about what each of these settings mean, you can visit <a href="https://microbit-micropython.readthedocs.io/en/latest/radio.html">this link</a>. YOu can always reset the settings using radio.reset(). The most common setting you will be changing is the channel of the radio. Like different frequencies on AM and FM radios, using different radio channels helps the microbit to know which channel they should be listening into for instructions.</p>
+                    <pre class="prettyprint linenums">
+from microbit import *
+import radio
+
+radio.on()
+radio.config(channel=68)
+radio.reset()
+radio.off()
+                    </pre>
+                    <p>Radios are actually very easy to use. But remember, each message is broadcasted to every other microbit out there using the same channel. It's a good idea to use a unique channel for you microbits. To send messages, simply use radio.send(). To receive messages, simply use radio.receive(). Test this program out with a partner, changing the channel your radio is using so that you are not interfering with any other groups' radio messages. Can you figure out what this program does?</p>
+                    <pre class="prettyprint linenums">
+radio.config(channel=7)
+
+while True:
+&emsp;&emsp;sleep(50)
+
+&emsp;&emsp;if button_a.was_pressed():
+&emsp;&emsp;&emsp;&emsp;display.show(Image.HAPPY)
+&emsp;&emsp;&emsp;&emsp;radio.send('A')
+&emsp;&emsp;elif button_b.was_pressed():
+&emsp;&emsp;&emsp;&emsp;display.show(Image.SAD)
+&emsp;&emsp;&emsp;&emsp;radio.send('B')
+
+&emsp;&emsp;message = radio.receive()
+
+&emsp;&emsp;if message == 'A':
+&emsp;&emsp;&emsp;&emsp;display.show(Image.HAPPY)
+
+&emsp;&emsp;if message == 'B':
+&emsp;&emsp;&emsp;&emsp;display.show(Image.SAD)
+                    </pre>
+                </div>
+                <div class="course-card card white container">
+                    <span class="card-title">Making Sound</span>
+                    <p>Another cool thing the microbit is able to do is to produce a variety of different sounds. However, this requires the microbit to be connected to a speaker or earphone (or any other audio output device). Using crocodile clips, connect the 0 and 1 numbers shown on the gold strip on the bottom of your microbit to an audio output device like the speaker we have provided you with or your personal earphones.</p>
+                    <p>First of all, we need to import the libraries again:</p>
+                    <pre class="prettyprint linenums">
+from microbit import *
+import speech
+                    </pre>
+                    <p>We can use speech.say() in order to make the microbit say things:</p>
+                    <pre class="prettyprint linenums">
+from microbit import *
+import speech
+
+speech.say('Hackonnect is the best.')
+sleep(1000)
+speech.say('I agree.')
+sleep(1000)
+                    </pre>
+                    <p>Of course, in order to make sounds that cannot be described by words, we need another method. For this, we can use phenomes with the pronounce() function. Phenomes are the different components that make up a sound. You can translate regular English into phenomes using the translate() function. You can also make the microbit sing by adding the pitch in front of your phenome using the sing() function as seen below. Unless you have a solid grasp on how phenomes work, we strongly recommend against using this in your group projects. It is still very fun and stupid to make weird noises with this however:</p>
+                    <pre class="prettyprint linenums">
+from microbit import *
+import speech
+
+speech.pronounce('/HEH5EH4EH3EH2EH2EH3EH4EH5EHLP')
+# You can also use translate in order to translate English into Phenomes
+speech.pronounce(translate('Aww, I\'m so sorry!'))
+sleep(1000)
+# We can also use different pitches with sing.
+sing('#115DOWWWW')
+                    </pre>
+                    <p>There are much easier ways to play music on the microbit. This requires us to import another library:</p>
+                    <pre class="prettyprint linenums">
+from microbit import *
+import music
+                    </pre>
+                    <p>Here's how the music.play() functions recognises which musical note a string represents: NOTE + OCTAVE : DURATION. For example, "a4:2" means that the note A is played on the 4th octave for 2 ticks.</p>
+                    <pre class="prettyprint linenums">
+from microbit import *
+import music
+
+music.play('a4:2')
+sleep(1000)
+                    </pre>
+                    <p>You can set the tempo of your music using music.set_tempo():</p>
+                    <pre class="prettyprint linenums">
+music.set_tempo(ticks = 4, bpm = 120)</pre>
+                    <p>When you are constructing your musical masterpiece, you can insert a list of musical notes as the argument to music.play() in order to play multiple notes is succession. Can you figure out what this code plays?</p>
+                    <pre class="prettyprint linenums">
+from microbit import *
+import music
+
+music.play(['e3:2', 'd3:2', 'c3:2', 'd3:2', 'e3:2', 'e3:2', 'e3:4', 'd3:2', 'd3:2', 'd3:4', 'e3:2', 'e3:2', 'e3:4', 'e3:2', 'd3:2', 'c3:2', 'd3:2', 'e3:2', 'e3:2', 'e3:2', 'e3:2', 'd3:2', 'd3:2', 'e3:2', 'd3:2', 'c3:4'])
+sleep(1000)
+# Stop all music that is playing
+stop()
+                    </pre>
+                    <p>Spend some time playing around with the speech and music modules. Please be aware that these are still in alpha and can be very unstable.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Exercises -->
+        <div class="row z-depth-1 purple lighten-3 banner">
+            <h1 class="centered white-text">Exercises</h1>
+        </div>
+
+        <div class="container row">
+            <div class="col s12">
+                <div class="course-card card white container">
+                    <span class="card-title">Exercise 1</span>
+                    <p>Using the knowledge we have learnt so far, try to create a device that can show the current temperature or act as a compass depending on which button you press on the microbit. Copy the following code and insert your code after "#Add your code here":</p>
+                    <pre class="prettyprint linenums">
+from microbit import *
+
+# Using the knowledge we have learnt so far, try to create a device that can
+# show the current temperature or act as a compass depending on which button
+# you press on the microbit.
+
+compass.calibrate()
+while True:
+&emsp;&emsp;sleep(50)
+&emsp;&emsp;# Add your code here
+display.clear()
+                    </pre>
+                    <p>As an extension task instead of using buttons, allow the user to use gestures to determine whether they want to see the current temperature or use the microbit as a compass.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="page-footer purple lighten-1">
+            <div class="footer-copyright purple lighten-1">
+                <div class="container">
+                    © 2019 Hackonnect. All rights reserved.
+                    <a class="grey-text text-lighten-4 right" href="https://hackonnect.squarespace.com">Official Website</a>
+                </div>
+            </div>
+        </footer>
+
+        <!-- Scripts -->
+        <script src="js/jquery-3.3.1.min.js"></script>
+        <script src="js/materialize.min.js"></script>
+        <script src="js/prettify.js"></script>
+        <script src="js/main.js"></script>
+    </body>
+</html>

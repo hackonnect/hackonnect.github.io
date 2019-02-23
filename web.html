@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link type="text/css" rel="stylesheet" href="css/desert.css">
+        <link type="text/css" rel="stylesheet" href="css/materialize.css"  media="screen, projection">
+        <link type="text/css" rel="stylesheet" href="css/style.css"  media="screen, projection">
+
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
+        <title>Microbit Course</title>
+    </head>
+    <body>
+        <!-- Navbar -->
+        <div class="navbar-fixed">
+            <nav class="purple lighten-1">
+                <div class="nav-wrapper container">
+                    <a href="#!" data-target="mobile-nav" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+                    <a href="#!" class="brand-logo"><div class="row"><div class="col s12 m3"><img src="media/logo.png" class="logo"></div><div class="col m9 hide-on-small-and-down">&nbsp;Hackonnect</div></div></a>
+                    <ul class="right hide-on-med-and-down">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a class="dropdown-trigger" href="#!" data-target="courses-dropdown">Course Resources<i class="material-icons right">arrow_drop_down</i></a></li>
+                        <ul id="courses-dropdown" class="dropdown-content">
+                            <li><a href="microbit.html">Microbit</a></li>
+                            <li><a href="web.html">Web Scraping</a></li>
+                            <li><a href="api.html">APIs</a></li>
+                            <li><a href="ml.html">Machine Learning</a></li>
+                        </ul>
+                        <li><a href="https://hackonnect.squarespace.com">Official Website</a></li>
+                        <li><a href="https://www.github.com/hackonnect">GitHub</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div> 
+        <ul id="mobile-nav" class="sidenav">
+            <li><a href="index.html">Home</a></li>
+            <li><div class="divider"></div></li>
+            <li><a class="subheader">Courses</a></li>
+            <li><a href="microbit.html">Microbit</a></li>
+            <li><a href="web.html">Web Scraping</a></li>
+            <li><a href="api.html">API</a></li>
+            <li><a href="ml.html">Machine Learning</a></li>
+            <li><div class="divider"></div></li>
+            <li><a href="https://hackonnect.squarespace.com">Official Website</a></li>
+            <li><a href="https://www.github.com/hackonnect">GitHub</a></li>
+        </ul>
+
+        <!-- Intro -->
+        <div class="container row">
+            <div class="col s12">
+                <div class="course-card card white container">
+                    <span class="card-title">Welcome to the Web Scraping Course</span>
+                    <p>There is an overwhelming amount of information available to us on webpages and we cannot possibly parse through all this information in our lifetime. This is where web scraping comes in - we can make programs that automatically retrieve the most important information on websites for us. In this web scraping course, we will be learning the basics of web scraping using Python and retrieve information from various websites.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Setup -->
+        <div class="row z-depth-1 purple lighten-3 banner">
+            <h1 class="centered white-text">Installation and Setup</h1>
+        </div>
+
+        <div class="container row">
+            <div class="col s12">
+                <div class="course-card card white container installation">
+                    <span class="card-title">Installation Instructions</span>
+                    <p>Installing <a href="https://www.makeuseof.com/tag/install-pip-for-python/">pip</a>. Please scroll down to your relevant operating system.</p>
+                    <p>Run "pip install beautifulsoup4" in your terminal (PowerShell on Windows, Terminal on macOS and if you are using another operating system you probably know what you are doing).</p>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Content -->
+        <div class="row z-depth-1 purple lighten-3 banner">
+            <h1 class="centered white-text">Course Content</h1>
+        </div>
+
+        <div class="container row">
+            <div class="col s12">
+                <div class="course-card card white container">
+                    <span class="card-title">Introduction to HTML</span>
+                    <pre class="prettyprint linenums">
+&lt;!DOCTYPE html&gt;
+
+&lt;html&gt;
+&lt;/html&gt;
+                    </pre>
+                </div>
+                <div class="course-card card white container">
+                    <span class="card-title">BeautifulSoup</span>
+                    <p>BeautifulSoup is the main library we will be using to scrape webpages. In order to retrieve webpages, however, we will need to use the requests library. Let's import both of those libraries at the top of our Python file.</p>
+                    <pre class="prettyprint linenums">
+from bs4 import BeautifulSoup
+import requests
+                    </pre>
+                    <p>For the scope of this course, we will not delve into the details of how retrieving the webpage works. All we need to know is how we can transform a URL into a BeautifulSoup object we can parse through. First, however, let's look at the source of the webpage we will be parsing (<a href="https://hackonnect.github.io/scrape1.html">link here</a>). The website is very simple and is nothing like what real websites are actually like, but this serves as a very good starting point for us to start learning web scraping.</p>
+                    <p>Now that we've had a look through the structure of the website, we can start creating a structural representation of the source file of our webpage called a "soup". This soup is a nested data structure that we can navigate through and retrieve information from.</p>
+                    <pre class="prettyprint linenums">
+website = requests.get('https://hackonnect.github.io/scrape1')
+soup = BeautifulSoup(website.content, 'html.parser')
+
+print(soup)
+                    </pre>
+                    <p>As you can see from the results of the print statement, the soup is basically a very long string containing the HTML of our website. The string isn't particularly readable however - we can use soup.prettify() to generate a readable string representation of the soup.</p>
+                    <pre class="prettyprint linenums">
+print(soup.prettify())
+                    </pre>
+                    <p> We can find each element in our soup by referencing them by their HTML element name, giving us their HTML code. For example, if we want to get the title of our HTML, we can simply do:</p>
+                    <pre class="prettyprint linenums">
+print(soup.title)
+                    </pre>
+                    <p>This should yield the following output:</p>
+                    <pre class="prettyprint linenums">
+&lt;title&gt;Practice Web Scraping with Python&lt;/title&gt;
+                    </pre>
+                    <p>We can also get the name of our HTML element by appending .name to the end. In this case, the following statement should print out "title":</p>
+                    <pre class="prettyprint linenums">
+print(soup.title.name)
+                    </pre>
+                    <p>Similarly, we can append .string to the end in order to get the contents of our HTML element.</p>
+                    <pre class="prettyprint linenums">
+print(soup.title.string)
+                    </pre>
+                    <p>The way we just introduced of finding HTML elements will only give you the first element that matches what we queried for. Our HTML page has multiple paragraphs, but the following will only print out the HTML code of our first paragraph:</p>
+                    <pre class="prettyprint linenums">
+print(soup.p)
+                    </pre>
+                    <p>In order to find multiple paragraphs, we have to use find_all(). This gives us a list of HTML elements that matches the criterion we search for. For the argument of find_all(), we will need to put the name of our HTML in quotation marks.</p>
+                    <pre class="prettyprint linenums">
+print(soup.find_all('p'))
+                    </pre>
+                    <p>Let's save this in a variable called paragraphs:</p>
+                    <pre class="prettyprint linenums">
+paragraphs = soup.find_all('p')
+                    </pre>
+                    <p>Remember HTML attributes? We can find the attribute of a particular HTML element by indexing the attirbute we want. For example, if we want to find the value of the class attribute of the second paragraph, we can type out the following:</p>
+                    <pre class="prettyprint linenums">
+print(paragraphs[1]['class'])
+                    </pre>
+                    <p>As you can see, we get a list of the attribute values. We can just index the first element in order to get what we want:</p>
+                    <pre class="prettyprint linenums">
+print(paragraphs[1]['class'][0])
+                    </pre>
+                    <p>Of course, for elements with multiple attribute values like the class values of the third paragraph, we should not index the list as this would mean that we may be discarding some important information.</p>
+                    <pre class="prettyprint linenums">
+print(paragraphs[2]['class'])
+                    </pre>
+                    <p>There's also a way we can find every single attribute of an element:</p>
+                    <pre class="prettyprint linenums">
+print(paragraphs[3].attrs)
+                    </pre>
+                    <p>In order to find an HTML element by its id, we can use find_all(id=''). This would give us a list of HTML elements with a specific id. However, because ids are unique, we can also simply use find(id=''). The find function, similar to how we added .title and .p to soup, returns the first element that matches the criterion inside the brackets. For everything else apart from finding the id, find_all() is usually the better choice. The following expressions will both yield the same output:</p>
+                    <pre class="prettyprint linenums">
+print(soup.find(id='unique'))
+print(soup.find_all(id='unique')[0]
+                    </pre>
+                    <p>This also works with custom attributes like "name":</p>
+                    <pre class="prettyprint linenums">
+print(soup.find_all(name='h1'))
+                    </pre>
+                    <p>We can also pass multiple attributes at once. The two expressions listed below are equivalent:</p>
+                    <pre class="prettyprint linenums">
+print(soup.find_all(name='h1', id='h1'))
+print(soup.find_all(attrs={'name': 'h1', 'id': 'h1'}))
+                    </pre>
+                    <p>Now, navigate to Exercise 1 and see if you are able to complete it.</p>
+                </div>
+                <div class="course-card card white container">
+                    <span class="card-title">Nested Elements</span>
+                </div>
+                <div class="course-card card white container">
+                    <span class="card-title">HTML Selectors</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Exercises -->
+        <div class="row z-depth-1 purple lighten-3 banner">
+            <h1 class="centered white-text">Exercises</h1>
+        </div>
+
+        <div class="container row">
+            <div class="col s12">
+                <div class="course-card card white container">
+                    <span class="card-title">Exercise 1</span>
+                    <p>1. Find the class of the last paragraph on <a href="https://hackonnect.github.io/scrape1">this page</a> (this is the same page used in the BeautifulSoup section of the course).</p>
+                    <p>2. There's actually a hidden paragraph with an id of "hidden" on the same page! Find out what it says.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="page-footer purple lighten-1">
+            <div class="footer-copyright purple lighten-1">
+                <div class="container">
+                    © 2019 Hackonnect. All rights reserved.
+                    <a class="grey-text text-lighten-4 right" href="https://hackonnect.squarespace.com">Official Website</a>
+                </div>
+            </div>
+        </footer>
+
+        <!-- Scripts -->
+        <script src="js/jquery-3.3.1.min.js"></script>
+        <script src="js/materialize.min.js"></script>
+        <script src="js/prettify.js"></script>
+        <script src="js/main.js"></script>
+    </body>
+</html>

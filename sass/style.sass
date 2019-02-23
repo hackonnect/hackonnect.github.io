@@ -22,6 +22,12 @@ body
 .centered
     text-align: center
 
+.navbar-fixed
+    margin-bottom: 20px
+
+.intro
+    margin-bottom: 0
+
 .logo
     @media #{$small-and-down}
         height: 56px
@@ -41,29 +47,52 @@ body
             text-align: justify
     @media #{$medium-only}
         padding: 3px
-        height: 310px
+        height: 250px
         p
             text-align: justify
     @media #{$large-and-up}
         padding: 5px
-        height: 365px
+        height: 300px
         p
             text-align: justify
 
 .img-card
     @media #{$medium-only}
-        height: 340px
+        height: 280px
     @media #{$large-and-up}
-        height: 365px
+        height: 300px
     img
-        width: 100%
+        display: block
+        width: auto
+        height: auto
+        max-width: 100%
+        max-height: 100%
         @media #{$medium-only}
             padding-left: 10%
             width: 90%
         @media #{$large-and-up}
             padding-top: 10%
 
+.banner
+    margin-top: 20px
+    margin-bottom: 20px
+    padding-top: 5px
+    padding-bottom: 5px
+    h1
+        margin-top: 20px
+        margin-bottom: 20px
+        display: block
+
 .course-card
-    padding: 5px
+    padding: 8px
     p
         text-align: justify
+
+pre
+    text-align: left
+    white-space: pre-line
+
+.installation
+    font-weight: bold
+    p
+        text-align: center

@@ -6450,6 +6450,12 @@ body {
 .centered, .card {
   text-align: center; }
 
+.navbar-fixed {
+  margin-bottom: 20px; }
+
+.intro {
+  margin-bottom: 0; }
+
 @media only screen and (max-width: 600px) {
   .logo {
     height: 56px; } }
@@ -6470,24 +6476,28 @@ body {
 @media only screen and (min-width: 601px) and (max-width: 992px) {
   .intro-card {
     padding: 3px;
-    height: 310px; }
+    height: 250px; }
     .intro-card p {
       text-align: justify; } }
 @media only screen and (min-width: 993px) {
   .intro-card {
     padding: 5px;
-    height: 365px; }
+    height: 300px; }
     .intro-card p {
       text-align: justify; } }
 
 @media only screen and (min-width: 601px) and (max-width: 992px) {
   .img-card {
-    height: 340px; } }
+    height: 280px; } }
 @media only screen and (min-width: 993px) {
   .img-card {
-    height: 365px; } }
+    height: 300px; } }
 .img-card img {
-  width: 100%; }
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%; }
   @media only screen and (min-width: 601px) and (max-width: 992px) {
     .img-card img {
       padding-left: 10%;
@@ -6496,9 +6506,28 @@ body {
     .img-card img {
       padding-top: 10%; } }
 
+.banner {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding-top: 5px;
+  padding-bottom: 5px; }
+  .banner h1 {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: block; }
+
 .course-card {
-  padding: 5px; }
+  padding: 8px; }
   .course-card p {
     text-align: justify; }
+
+pre {
+  text-align: left;
+  white-space: pre-line; }
+
+.installation {
+  font-weight: bold; }
+  .installation p {
+    text-align: center; }
 
 /*# sourceMappingURL=style.css.map */
