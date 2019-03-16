@@ -22,6 +22,7 @@
                         <li><a href="index.html">Home</a></li>
                         <li><a class="dropdown-trigger" href="#!" data-target="courses-dropdown">Course Resources<i class="material-icons right">arrow_drop_down</i></a></li>
                         <ul id="courses-dropdown" class="dropdown-content">
+                            <li><a href="basics.html">Basic Python</a></li>
                             <li><a href="microbit.html">Microbit</a></li>
                             <li><a href="web.html">Web Scraping</a></li>
                             <li><a href="api.html">APIs</a></li>
@@ -37,6 +38,7 @@
             <li><a href="index.html">Home</a></li>
             <li><div class="divider"></div></li>
             <li><a class="subheader">Courses</a></li>
+            <li><a href="basics.html">Basic Python</a></li>
             <li><a href="microbit.html">Microbit</a></li>
             <li><a href="web.html">Web Scraping</a></li>
             <li><a href="api.html">API</a></li>
@@ -102,7 +104,7 @@ print(get(url).json())
 print(get(url, data={'key': 'data1'}).json())                        
 print(get(url + '?key=data1').json())
                     </pre>
-                    <p>Both methods yield the same result, but the second oen is preferred because of it's simplicity. The url becomes <a href="https://hackonnect-api.herokuapp.com/api?key=data1">https://hackonnect-api.herokuapp.com/api?key=data1</a>. If you visit this link with your browser, you should see some sort of visualisation of the JSON data that was returned. The part after the question mark is called the query string, and has this format: ?parameter1=value&amp;parameter2=value&amp;parameter3=value... You might have seen query strings when you search up something on a search engine. You can find more information about query strings <a href="concepts.html">here</a>. As you can see, we can pass a dictionary as the data with our GET request, specifying which key we wanted to retrieve. The data we passed are called the 'parameters' of our request. The parameter name in this case is key, with a parameter value of data1. Our API only accepts two types of parameters: key and value. This is because of the simplicity of our API. When we work with an actual API later on, we'll look at how we can use parameters to filter data. Try to retrieve the values of other data entries yourself. Once you are done with that, try to retrive the value of "data4" - what happens?</p>
+                    <p>Both methods yield the same result, but the second oen is preferred because of it's simplicity. The url becomes <a href="https://hackonnect-api.herokuapp.com/api?key=data1">https://hackonnect-api.herokuapp.com/api?key=data1</a>. If you visit this link with your browser, you should see some sort of visualisation of the JSON data that was returned. The part after the question mark is called the query string, and has this format: ?parameter1=value&amp;parameter2=value&amp;parameter3=value... You might have seen query strings when you search up something on a search engine. As you can see, we can pass a dictionary as the data with our GET request, specifying which key we wanted to retrieve. The data we passed are called the 'parameters' of our request. The parameter name in this case is key, with a parameter value of data1. Our API only accepts two types of parameters: key and value. This is because of the simplicity of our API. When we work with an actual API later on, we'll look at how we can use parameters to filter data. Try to retrieve the values of other data entries yourself. Once you are done with that, try to retrive the value of "data4" - what happens?</p>
                     <p>When you try to get something that doesn't exist you will get an error. Now let's try adding data4 into the database so that it works. To do this, we will use a POST request. This method requests the server to accept the information that was sent along as a new entry. Usually, we use POST requests in order to create a new entry (URI, universal resource identifier) in database.</p>
                     <pre class="prettyprint linenums">
 post(url + '?key=data4&value=value4')
@@ -116,7 +118,7 @@ print(get(url + '?key=data4').json())
 print(post(url + '?key=data4&value=value4').json())
                     </pre>
                     <p>Our practice API automatically sees if the value is already there and rejects new POST requests. Try to use the POST request to add different resources to our database.</p>
-                    <p>What if we need to modify resource values in the database? This is when PUT requests come in. PUT requests tell the server to store the attached information in an existing URI. In most APIs, PUT requests can also be used to add new URIs, but we have prevented that in our practice API so that you know the difference between POST and PUT requests. If you want to know more about the details between POST and PUT requests, please visit <a href="concepts.html">this page.</a></p>
+                    <p>What if we need to modify resource values in the database? This is when PUT requests come in. PUT requests tell the server to store the attached information in an existing URI. In most APIs, PUT requests can also be used to add new URIs, but we have prevented that in our practice API so that you know the difference between POST and PUT requests.
                     <pre class="prettyprint linenums">
 put(url + '?key=data1&value=new value!')
                     </pre>

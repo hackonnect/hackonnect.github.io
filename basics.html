@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link type="text/css" rel="stylesheet" href="css/desert.css">
+        <link type="text/css" rel="stylesheet" href="css/materialize.css"  media="screen, projection">
+        <link type="text/css" rel="stylesheet" href="css/style.css"  media="screen, projection">
+
+        <link rel="shortcut icon" type="image/x-icon" href="favicon.png">
+        <title>Basic Python Course</title>
+    </head>
+    <body>
+        <!-- Navbar -->
+        <div class="navbar-fixed">
+            <nav class="purple lighten-1">
+                <div class="nav-wrapper container">
+                    <a href="#!" data-target="mobile-nav" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+                    <a href="#!" class="brand-logo"><div class="row"><div class="col s12 m3"><img src="media/logo.png" class="logo"></div><div class="col m9 hide-on-small-and-down">&nbsp;Hackonnect</div></div></a>
+                    <ul class="right hide-on-med-and-down">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a class="dropdown-trigger" href="#!" data-target="courses-dropdown">Course Resources<i class="material-icons right">arrow_drop_down</i></a></li>
+                        <ul id="courses-dropdown" class="dropdown-content">
+                            <li><a href="basics.html">Basic Python</a></li>
+                            <li><a href="microbit.html">Microbit</a></li>
+                            <li><a href="web.html">Web Scraping</a></li>
+                            <li><a href="api.html">APIs</a></li>
+                            <li><a href="ml.html">Machine Learning</a></li>
+                        </ul>
+                        <li><a href="https://hackonnect.squarespace.com">Official Website</a></li>
+                        <li><a href="https://www.github.com/hackonnect">GitHub</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <ul id="mobile-nav" class="sidenav">l
+            <li><a href="index.html">Home</a></li>
+            <li><div class="divider"></div></li>
+            <li><a class="subheader">Courses</a></li>
+            <li><a href="basics.html">Basic Python</a></li>
+            <li><a href="microbit.html">Microbit</a></li>
+            <li><a href="web.html">Web Scraping</a></li>
+            <li><a href="api.html">API</a></li>
+            <li><a href="ml.html">Machine Learning</a></li>
+            <li><div class="divider"></div></li>
+            <li><a href="https://hackonnect.squarespace.com">Official Website</a></li>
+            <li><a href="https://www.github.com/hackonnect">GitHub</a></li>
+        </ul>
+
+        <!-- Intro -->
+        <div class="container row">
+            <div class="col s12">
+                <div class="course-card card white container">
+                    <span class="card-title">Welcome to the Basic Python Course</span>
+                    <p>Designed by Lucas Liu and Suyang Lo, this is a very short introductory course to Python for participants that have little experience with programming or are unfamiliar with Python.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Setup -->
+        <div class="row z-depth-1 purple lighten-3 banner">
+            <h1 class="centered white-text">Installation and Setup</h1>
+        </div>
+
+        <div class="container row">
+            <div class="col s12">
+                <div class="course-card card white container installation">
+                    <span class="card-title">Installation Instructions</span>
+                    <p>Installation for <a href="https://www.python.org/ftp/python/3.7.2/python-3.7.2-amd64.exe">Windows</a></p>
+                    <p>Installation for <a href="https://www.python.org/ftp/python/3.7.2/python-3.7.2-macosx10.9.pkg">macOS</a></p>
+                    <p>All downloads for other operating systems can be found <a href="https://www.python.org/downloads/">here</a>.</p>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Content -->
+        <div class="row z-depth-1 purple lighten-3 banner">
+            <h1 class="centered white-text">Course Content</h1>
+        </div>
+
+        <div class="container row">
+            <div class="col s12">
+                <div class="course-card card white container">
+                    <span class="card-title">Variables</span>
+                    <p>Variables are reserved memory locations to store values. The declaration of a variable occur automatically when a value is assigned to a variable with the equal sign (=). Values stored in variables can be changed through operations such as +, -, * and /.</p>
+                    <pre class="prettyprint linenums">
+v = 1
+v = v + 1
+v += 1
+                    </pre>
+                    <p>Multiple variables can also be assigned in different ways. The following code declares all a, b and c, assigning a value of 1 to each.</p>
+                    <pre class="prettyprint linenums">
+a = b = c = 1
+                    </pre>
+                    <p>Another way of assigning multiple variables is shown below:</p>
+                    <pre class="prettyprint linenums">
+a, b, c = 1, 2, 'hello'
+                    </pre>
+                    <p>The function print() allows variables to be outputted to the screen:</p>
+                    <pre class="prettyprint linenums">
+a = 'Hello World!'
+print(a)
+                    </pre>
+                    <p>Conditions are often used to compare variables. The following code illustrates the most common comparison operators and their expected output:</p>
+                    <pre class="prettyprint linenumes">
+3 == 4 # False
+3 != 4 # True
+3 &lt;  4 # True
+3 &lt;= 4 # True
+3 &gt;  4 # False
+3 &gt;= 4 # False
+                    </pre>
+                </div>
+                <div class="course-card card white container">
+                    <span class="card-title">Lists</span>
+                    <p>A list is a group of variables. Items are separated by commas and enclosed by square brackets ([]). They are similar to arrays but data belonging to the same list can be of different data types. To following code declares a list with 4 elements that have mixed data types:</p>
+                    <pre class="prettyprint linenums">
+list = ['abc', 123, 'hello', 22]
+                    </pre>
+                    <p>Data stored at different positions in a list can be accessed using [index]. This is demonstrated in the example below. In Python, lists are 0-indexed, meaning that the first element has an index of 0, the second an index of 1, the third an index of 2 etc..</p>
+                    <pre class="prettyprint linenums">
+list = ['abc', 123, 'hello', 22]
+print(list[0]) # This should print out 'abc'
+print(list[1:3]) # This should print out the 2nd and 3rd elements. Note that the last element we note down (3)is not printed.
+print(list[1:]) # This prints out every item in the list starting from the 2nd element.
+                    </pre>
+                    <p>Lists can be 'added' together (this is called concatenation) like this:</p>
+                    <pre class="prettyprint linenums">
+concatenated_list = ['a', 1] + ['b', 2]
+                    </pre>
+                </div>
+                <div class="course-card card white container">
+                    <span class="card-title">Conditional Statements</span>
+                    <p>These are used to execute different code depending on different conditions. "else" is often used if none of the listed if cases are satisfied.</p>
+                    <p>They are written out as following:</p>
+                    <pre class="prettyprint linenums">
+a = 50
+if a == 50:
+&emsp;&emsp;print('a is 50')
+elif a &lt; 50:
+&emsp;&emsp;print('a is less than 50')
+else:
+&emsp;&emsp;print('a is greater than 50')
+                    </pre>
+                    <p>Remember that indentations matters in Python. Usually, you can indent statements located inside the if, if-else, or if-elif-else block using tabs, 4 spaces or 2 spaces.</p>
+                    <p>AND and OR statements can be used with our conditional statements. When you use AND to combine two boolean expressions, it will only return True if both expressions are true. When you use OR to combine two boolean expressions, it will only return False if both expressions are false.</p>
+                </div>
+                <div class="course-card card white container">
+                    <span class="card-title">Iteration</span>
+                    <p>Iteration is basically repeating a process over different values in a list. For loops can be used to repeat code for a given amount of times. Remember that for loops start counting from zero. The following code prints out 0, 1 and 2.</p>
+                    <pre class="prettyprint linenums">
+for count in range(3):
+&emsp;&emsp;print(count)
+                    </pre>
+                    <p>For loops can also be used to iterate through lists. In fact, range(3) actually returns a list for the for loop to iterate through.</p>
+                    <pre class="prettyprint linenums">
+for letter in ['a', 'b', 'c']:
+&emsp;&emsp;print(letter)
+                    </pre>
+                    <p>Iteration can also be achieved through while loops. This type of loop repeats code while a condition remains true. It can be used alongside 'else' to execute code if the condition is no long true.</p>
+                    <pre class="prettyprint linenums">
+a, b = 3, 0
+while b &lt; a:
+&emsp;&emsp;b = b + 1
+&emsp;&emsp;print(b)
+else:
+&emsp;&emsp;print('b is no longer less than a')
+                    </pre>
+                    <p>The output of the code above should be:</p>
+                    <pre class="prettyprint linenums">
+1
+2
+3
+b is no longer less than a
+                    </pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- Exercises -->
+        <div class="row z-depth-1 purple lighten-3 banner">
+            <h1 class="centered white-text">Exercises</h1>
+        </div>
+
+        <div class="container row">
+            <div class="col s12">
+                <div class="course-card card white container">
+                    <span class="card-title">Exercise 1</span>
+                    <p></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="page-footer purple lighten-1">
+            <div class="footer-copyright purple lighten-1">
+                <div class="container">
+                    © 2019 Hackonnect. All rights reserved.
+                    <a class="grey-text text-lighten-4 right" href="https://hackonnect.squarespace.com">Official Website</a>
+                </div>
+            </div>
+        </footer>
+
+        <!-- Scripts -->
+        <script src="js/jquery-3.3.1.min.js"></script>
+        <script src="js/materialize.min.js"></script>
+        <script src="js/prettify.js"></script>
+        <script src="js/main.js"></script>
+    </body>
+</html>
