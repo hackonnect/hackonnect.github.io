@@ -261,6 +261,16 @@ print(soup.select('p:nth-of-type(3)'))
                     <pre class="prettyprint linenums">
 print(soup.select_one('p:nth-of-type(3)'))
                     </pre>
+                    <p>Sometimes, different HTML elements will affect our code. Let's take a look at the last paragraph with a class of "broken". This paragraph is, quite literally, broken. If you try to extract the text by appending .string to the end of your Python statement, you'll find out that it doesn't work. Consequently, we need to remove the other stuff inside the paragraph.</p>
+                    <p>If you use inspect element, you'll realise that there is a span there affecting it. We can remove the span like this:</p>
+                    <pre class="prettyprint linenums">
+soup.select_one('.broken').span.decompose()
+                    </pre>
+                    <p>Decomposing the element will remove it. If we want to keep the value in another variable after decomposing, we can do the following:</p>
+                    <pre class="prettyprint linenums">
+new_variable = soup.select_one('.broken').span.extract()
+                    </pre>
+                    <p>The code above won't work now because we have already decomposed the span. If you haven't removed the span yet, extract() can be a very useful tool.</p>
                     <p>Now, go ahead and attempt to solve Exercise 3.</p>
                 </div>
             </div>
