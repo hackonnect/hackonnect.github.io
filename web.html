@@ -87,86 +87,68 @@
 &lt;!DOCTYPE html&gt;
 
 &lt;html&gt;
-&lt;/html&gt;
-                    </pre>
+&lt;/html&gt;</pre>
                 </div>
                 <div class="course-card card white container">
                     <span class="card-title">BeautifulSoup</span>
                     <p>BeautifulSoup is the main library we will be using to scrape webpages. In order to retrieve webpages, however, we will need to use the requests library. Let's import both of those libraries at the top of our Python file.</p>
                     <pre class="prettyprint linenums">
 from bs4 import BeautifulSoup
-import requests
-                    </pre>
+import requests</pre>
                     <p>For the scope of this course, we will not delve into the details of how retrieving the webpage works. All we need to know is how we can transform a URL into a BeautifulSoup object we can parse through. First, however, let's look at the source of the webpage we will be parsing (<a href="https://hackonnect.github.io/scrape1.html">link here</a>). The website is very simple and is nothing like what real websites are actually like, but this serves as a very good starting point for us to start learning web scraping.</p>
-                    <p>Now that we've had a look through the structure of the website, we can start creating a structural representation of the source file of our webpage called a "soup". This soup is a nested data structure that we can navigate through and retrieve information from.</p>
+                    <p>Now that we've had a look through the structure of the website, we can start creating a structural representation of our webpage's source file and store it in a variable called "soup". This varaible contains nested data structure that we can navigate through and retrieve information from.</p>
                     <pre class="prettyprint linenums">
 website = requests.get('https://hackonnect.github.io/scrape1')
 soup = BeautifulSoup(website.content, 'html.parser')
 
-print(soup)
-                    </pre>
-                    <p>As you can see from the results of the print statement, the soup is basically a very long string containing the HTML of our website. The string isn't particularly readable however - we can use soup.prettify() to generate a readable string representation of the soup.</p>
+print(soup)</pre>
+                    <p>As you can see from the outputs of the print statement, the soup is basically a very long string containing the raw HTML of our website. The string isn't particularly readable. However, we can use soup.prettify() to generate a readable string representation of the soup.</p>
                     <pre class="prettyprint linenums">
-print(soup.prettify())
-                    </pre>
+print(soup.prettify())</pre>
                     <p> We can find each element in our soup by referencing them by their HTML element name, giving us their HTML code. For example, if we want to get the title of our HTML, we can simply do:</p>
                     <pre class="prettyprint linenums">
-print(soup.title)
-                    </pre>
+print(soup.title)</pre>
                     <p>This should yield the following output:</p>
                     <pre class="prettyprint linenums">
-&lt;title&gt;Practice Web Scraping with Python&lt;/title&gt;
-                    </pre>
+&lt;title&gt;Practice Web Scraping with Python&lt;/title&gt;</pre>
                     <p>We can also get the name of our HTML element by appending .name to the end. In this case, the following statement should print out "title":</p>
                     <pre class="prettyprint linenums">
-print(soup.title.name)
-                    </pre>
+print(soup.title.name)</pre>
                     <p>Similarly, we can append .string to the end in order to get the contents of our HTML element.</p>
                     <pre class="prettyprint linenums">
-print(soup.title.string)
-                    </pre>
+print(soup.title.string)</pre>
                     <p>The way we just introduced of finding HTML elements will only give you the first element that matches what we queried for. Our HTML page has multiple paragraphs, but the following will only print out the HTML code of our first paragraph:</p>
                     <pre class="prettyprint linenums">
-print(soup.p)
-                    </pre>
+print(soup.p)</pre>
                     <p>In order to find multiple paragraphs, we have to use find_all(). This gives us a list of HTML elements that matches the criterion we search for. For the argument of find_all(), we will need to put the name of our HTML in quotation marks.</p>
                     <pre class="prettyprint linenums">
-print(soup.find_all('p'))
-                    </pre>
+print(soup.find_all('p'))</pre>
                     <p>Let's save this in a variable called paragraphs:</p>
                     <pre class="prettyprint linenums">
-paragraphs = soup.find_all('p')
-                    </pre>
+paragraphs = soup.find_all('p')</pre>
                     <p>Remember HTML attributes? We can find the attribute of a particular HTML element by indexing the attirbute we want. For example, if we want to find the value of the class attribute of the second paragraph, we can type out the following:</p>
                     <pre class="prettyprint linenums">
-print(paragraphs[1]['class'])
-                    </pre>
+print(paragraphs[1]['class'])</pre>
                     <p>As you can see, we get a list of the attribute values. We can just index the first element in order to get what we want:</p>
                     <pre class="prettyprint linenums">
-print(paragraphs[1]['class'][0])
-                    </pre>
+print(paragraphs[1]['class'][0])</pre>
                     <p>Of course, for elements with multiple attribute values like the class values of the third paragraph, we should not index the list as this would mean that we may be discarding some important information.</p>
                     <pre class="prettyprint linenums">
-print(paragraphs[2]['class'])
-                    </pre>
+print(paragraphs[2]['class'])</pre>
                     <p>There's also a way we can find every single attribute of an element:</p>
                     <pre class="prettyprint linenums">
-print(paragraphs[3].attrs)
-                    </pre>
+print(paragraphs[3].attrs)</pre>
                     <p>In order to find an HTML element by its id, we can use find_all(id=''). This would give us a list of HTML elements with a specific id. However, because ids are unique, we can also simply use find(id=''). The find function, similar to how we added .title and .p to soup, returns the first element that matches the criterion inside the brackets. For everything else apart from finding the id, find_all() is usually the better choice. The following expressions will both yield the same output:</p>
                     <pre class="prettyprint linenums">
 print(soup.find(id='unique'))
-print(soup.find_all(id='unique')[0]
-                    </pre>
+print(soup.find_all(id='unique')[0]</pre>
                     <p>This also works with custom attributes like "name":</p>
                     <pre class="prettyprint linenums">
-print(soup.find_all(name='h1'))
-                    </pre>
+print(soup.find_all(name='h1'))</pre>
                     <p>We can also pass multiple attributes at once. The two expressions listed below are equivalent:</p>
                     <pre class="prettyprint linenums">
 print(soup.find_all(name='h1', id='h1'))
-print(soup.find_all(attrs={'name': 'h1', 'id': 'h1'}))
-                    </pre>
+print(soup.find_all(attrs={'name': 'h1', 'id': 'h1'}))</pre>
                     <p>Now, navigate to Exercise 1 and see if you are able to complete it.</p>
                 </div>
                 <div class="course-card card white container">
@@ -177,53 +159,42 @@ from bs4 import BeautifulSoup
 import requests
 
 website = requests.get('https://hackonnect.github.io/scrape2')
-soup = BeautifulSoup(website.content, 'html.parser')
-                    </pre>
+soup = BeautifulSoup(website.content, 'html.parser')</pre>
                     <p>Let's look at a shortcut of how we can find all the divs with a class of "sibling":</p>
                     <pre class="prettyprint linenums">
-print(soup.find_all('div', 'sibling'))
-                    </pre>
+print(soup.find_all('div', 'sibling'))</pre>
                     <p>We simply put the name of the class after the HTML element tag name. In order to navigate the hierarchical structure of the divs better, let's save the parent div encompassing everything as a new variable called "parent".</p>
                     <pre class="prettyprint linenums">
-parent = soup.div
-                    </pre>
+parent = soup.div</pre>
                     <p>We are able to list out all the children of this parent div using div.contents. Contents gives us everything that is inside the parent div. We can save all the contents in a variable called "children".</p>
                     <pre class="prettyprint linenums">
-children = parent.contents
-                    </pre>
+children = parent.contents</pre>
                     <p>As you can see, we have successfully saved all the child divs in a variable. This variable has the same type as "soup" and "parent": it's still a soup. Soup is a hierarchical and recursive structure that consists of itself. To find the amount of children the parent div has, we can simply find the length of children:</p>
                     <pre class="prettyprint linenums">
-print(len(children))
-                    </pre>
+print(len(children))</pre>
                     <p>We get an answer of 9. However, if you navigate back to the page we are using, we can only count 4 orange divs! To get a better understanding of why this is the case, let's print out children and see what it actually contains.</p>
                     <pre class="prettyprint linenums">
-print(children)
-                    </pre>
+print(children)</pre>
                     <p>In the printed output, we can see a lot of '\n's. These are line break characters, showing us where in the HTML is there a new line. Unfortunately, they are not particularly useful to us and should be removed. As a quick exercise, try to remove all of the line breaks from children. See Exercise 2 for a solution. If you run the following code afterwards, the output should be 4:</p>
                     <pre class="prettyprint linenums">
-print(len(children))
-                    </pre>
+print(len(children))</pre>
                     <p>To find the parent of each child div, we can simply append .parent onto the end of the child. Here is an example of how it works:</p>
                     <pre class="prettyprint linenums">
-print(children[0].parent)
-                    </pre>
+print(children[0].parent)</pre>
                     <p>Apart from navigating up and down the hierarchical structure, we can also find siblings of a particular div. Let's try using next_sibling in order to find the next sibling:</p>
                     <pre class="prettyprint linenums">
 for child in children:
-&emsp;&emsp;print(child.next_sibling)
-                    </pre>
+&emsp;&emsp;print(child.next_sibling)</pre>
                     <p>This is not what we are expecting is it? This is because .next_sibling only works on BeautifulSoup objects. Earlier on when we made the children variable, we used parent.contents to give us a list of strings of HTML elements. In order to get a generator containing BeautifulSoup objects, we need to use parent.children. Here's what we mean:</p>
                     <pre class="prettyprint linenums">
 children = parent.children # Remember that we did not filter out any of the empty  this time.
 print(children)
 for child in children:
-&emsp;&emsp;print(child.next_sibling)
-                    </pre>
+&emsp;&emsp;print(child.next_sibling)</pre>
                     <p>Now this gives us our intended outcome. If we want a generator containing BeautifulSoup objects of the next siblings, we can use .next_siblings. Remember that if you use things that return generators such as .children, the result you get is NOT a list. It's a list_iterator / generator that should only be used for iteration.</p>
                     <pre class="prettyprint linenums">
 for next_sibling in parent.div.next_siblings:
-&emsp;&emsp;print('I\'m another sibling!')
-                    </pre>
+&emsp;&emsp;print('I\'m another sibling!')</pre>
                     <p>Have a few minutes to mess around with moving through the hierarchical and nested structure.</p>
                 </div>
                 <div class="course-card card white container">
@@ -234,42 +205,33 @@ from bs4 import BeautifulSoup
 import requests
 
 website = requests.get('https://hackonnect.github.io/scrape3')
-soup = BeautifulSoup(website.content, 'html.parser')
-                    </pre>
+soup = BeautifulSoup(website.content, 'html.parser')</pre>
                     <p>Sometimes, we need to find the third, fourth, seventh or even forty-second element. To do this, we need to first know how CSS selectors work with BeautifulSoup. We can use select() in order to select HTML elements using CSS selectors. The following code does the exact same thing as soup.find_all('p'), except it uses CSS selectors. If possible, always use find_all() as it is significantly faster.</p>
                     <pre class="prettyprint linenums">
-print(soup.select('p'))                
-                    </pre>
+print(soup.select('p'))</pre>
                     <p>Here are a few CSS selectors that you might need to know:</p>
                     <p>Selecting every p inside a div:</p>
                     <pre class="prettyprint linenums">
-print(soup.select('div p'))
-                    </pre>
+print(soup.select('div p'))</pre>
                     <p>Selecting every p that is directly under a div:</p>
                     <pre class="prettyprint linenums">
-print(soup.select('div > p'))
-                    </pre>
+print(soup.select('div > p'))</pre>
                     <p>Finding everything with a class of example:</p>
                     <pre class="prettyprint linenums">
-print(soup.select('.example'))
-                    </pre>
+print(soup.select('.example'))</pre>
                     <p>Finding the third p:</p>
                     <pre class="prettyprint linenums">
-print(soup.select('p:nth-of-type(3)'))
-                    </pre>
+print(soup.select('p:nth-of-type(3)'))</pre>
                     <p>Similar to how find_all() has a counterpart in find(), select() has a counterpart that only selects the first element that meets the criterion called select_one():</p>
                     <pre class="prettyprint linenums">
-print(soup.select_one('p:nth-of-type(3)'))
-                    </pre>
+print(soup.select_one('p:nth-of-type(3)'))</pre>
                     <p>Sometimes, different HTML elements will affect our code. Let's take a look at the last paragraph with a class of "broken". This paragraph is, quite literally, broken. If you try to extract the text by appending .string to the end of your Python statement, you'll find out that it doesn't work. Consequently, we need to remove the other stuff inside the paragraph.</p>
                     <p>If you use inspect element, you'll realise that there is a span there affecting it. We can remove the span like this:</p>
                     <pre class="prettyprint linenums">
-soup.select_one('.broken').span.decompose()
-                    </pre>
+soup.select_one('.broken').span.decompose()</pre>
                     <p>Decomposing the element will remove it. If we want to keep the value in another variable after decomposing, we can do the following:</p>
                     <pre class="prettyprint linenums">
-new_variable = soup.select_one('.broken').span.extract()
-                    </pre>
+new_variable = soup.select_one('.broken').span.extract()</pre>
                     <p>The code above won't work now because we have already decomposed the span. If you haven't removed the span yet, extract() can be a very useful tool.</p>
                     <p>Now, go ahead and attempt to solve Exercise 3.</p>
                 </div>
@@ -296,7 +258,7 @@ children = list(filter(lambda x: x != '\n', children))</pre>
                 </div>
                 <div class="course-card card white container">
                     <span class="card-title">Exercise 3</span>
-                    <p> Wikipedia is one of our most used websites. Whether you'd like to admit it or not, we all use Wikipedia to get information. Let's say we want to get the standard atomic weight of every single element. Using Wikipedia and BeautifulSoup, we can easily retrieve this information. Try to do it on your own before asking for help. You might not have enough time to finish it. Have fun! Feel free to carry on working on this in your free time. Computer Science can be fun!</p>
+                    <p> Wikipedia is one of our most used websites. Whether you'd like to admit it or not, we all use Wikipedia to get information. Let's say we want to get the relative atomic mass of all known elements. Using Wikipedia and BeautifulSoup, we can easily retrieve this information. Try to do it on your own before asking for help. You might not have enough time to finish it. Have fun! Feel free to carry on working on this in your free time. Computer Science can be fun!</p>
                     <p><b>Hints:</b></p>
                     <p>Try to look for a webpage that has the all the values you need.</p>
                     <p>Use inspect element to find the correct element.</p>
