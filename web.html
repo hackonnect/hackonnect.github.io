@@ -82,12 +82,27 @@
         <div class="container row">
             <div class="col s12">
                 <div class="course-card card white container">
-                    <span class="card-title">Introduction to HTML</span>
+                    <span class="card-title">Introduction to HTML Tags</span>
+                    <p>HTML tags are the building blocks of every website that you see on the internet. Tags come in pairs like the &lt;p&gt; and &lt;/p&gt; tags below. The first tag is known as the 'start tag' and the second is known as the 'end tag' and usually is the same as the start tag but with a forward slash (/) in front.</p>
                     <pre class="prettyprint linenums">
 &lt;!DOCTYPE html&gt;
 
 &lt;html&gt;
+&lt;p&gt;This is a paragraph&lt;/p&gt;
 &lt;/html&gt;</pre>
+                    <p>Two important things to note are that:</p>
+                    <ol>
+                        <li>When a web browser loads a HTML document it doesn't display the tags but instead uses them to identify how the webpage is meant to be structured and displays the elements accordingly</li>
+                        <li>Only the information between the &lt;body&gt; and &lt;/body&gt; tags will be displayed by the web browser (The above HTML code would not display anything on a webpage)</li>
+                    </ol>
+                    <p>HTML tags are also able to have a bit more complexity to make customizing the content easier. HTML tags can be structured as such</p>
+                    <pre class="prettyprint linenums">
+&lt;!DOCTYPE html&gt;
+
+&lt;html&gt;
+&lt;img src = "http://www.imagewebsite/image"&gt;
+&lt;/html&gt;</pre>
+                    <p>Attributes are things that provide additional information to the browser about how the content is to be displayed. The tag above is structured as &lt;tagname attribute = "attribute value"&gt;  In the above example the tagname img is what HTML uses to display an image, src is the attribute which is the source that the image is going to be located at, and http://www.imagewebsite/image is the value that the src attribute takes and is where the image is sourced.</p>
                 </div>
                 <div class="course-card card white container">
                     <span class="card-title">BeautifulSoup</span>
