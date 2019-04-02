@@ -3,7 +3,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0">
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Open+Sans|Source+Code+Pro" rel="stylesheet">
         <link type="text/css" rel="stylesheet" href="css/desert.css">
         <link type="text/css" rel="stylesheet" href="css/materialize.css"  media="screen, projection">
         <link type="text/css" rel="stylesheet" href="css/style.css"  media="screen, projection">
@@ -20,7 +20,7 @@
                     <a href="#!" class="brand-logo"><div class="row"><div class="col s12 m3"><img src="media/logo.png" class="logo"></div><div class="col m9 hide-on-small-and-down">&nbsp;Hackonnect</div></div></a>
                     <ul class="right hide-on-med-and-down">
                         <li><a href="index.html">Home</a></li>
-                        <li><a class="dropdown-trigger" href="#!" data-target="courses-dropdown">Course Resources<i class="material-icons right">arrow_drop_down</i></a></li>
+                        <li><a class="dropdown-trigger" href="#!" data-target="courses-dropdown">Courses<i class="material-icons right">arrow_drop_down</i></a></li>
                         <ul id="courses-dropdown" class="dropdown-content">
                             <li><a href="basics.html">Basic Python</a></li>
                             <li><a href="microbit.html">Microbit</a></li>
@@ -28,13 +28,21 @@
                             <li><a href="api.html">APIs</a></li>
                             <li><a href="ml.html">Machine Learning</a></li>
                         </ul>
-                        <li><a href="https://hackonnect.squarespace.com">Official Website</a></li>
-                        <li><a href="https://www.github.com/hackonnect">GitHub</a></li>
+                        <li><a class="dropdown-trigger" href="#!" data-target="projects-dropdown">Group Projects<i class="material-icons right">arrow_drop_down</i></a></li>
+                        <ul id="projects-dropdown" class="dropdown-content">
+                            <li><a href="Hackonnect_2019_Group_Project_Guidelines.pdf">Guidelines</a></li>
+                            <li><a href="Hackonnect_2019_Group_Project_Rubric.pdf">Rubric</a></li>
+                        </ul>
+                        <li><a class="dropdown-trigger" href="#!" data-target="links-dropdown">Links<i class="material-icons right">arrow_drop_down</i></a></li>
+                        <ul id="links-dropdown" class="dropdown-content">
+                            <li><a href="https://hackonnect.squarespace.com">Official Website</a></li>
+                            <li><a href="https://www.github.com/hackonnect">GitHub</a></li>
+                        </ul>
                     </ul>
                 </div>
             </nav>
-        </div>
-        <ul id="mobile-nav" class="sidenav">l
+        </div> 
+        <ul id="mobile-nav" class="sidenav">
             <li><a href="index.html">Home</a></li>
             <li><div class="divider"></div></li>
             <li><a class="subheader">Courses</a></li>
@@ -44,6 +52,11 @@
             <li><a href="api.html">API</a></li>
             <li><a href="ml.html">Machine Learning</a></li>
             <li><div class="divider"></div></li>
+            <li><a class="subheader">Group Project Resources</a></li>
+            <li><a href="Hackonnect_2019_Group_Project_Guidelines.pdf">Guidelines</a></li>
+            <li><a href="Hackonnect_2019_Group_Project_Rubric.pdf">Rubric</a></li>
+            <li><div class="divider"></div></li>
+            <li><a class="subheader">Links</a></li>
             <li><a href="https://hackonnect.squarespace.com">Official Website</a></li>
             <li><a href="https://www.github.com/hackonnect">GitHub</a></li>
         </ul>
@@ -104,7 +117,7 @@ a = 'Hello World!'
 print(a)
                     </pre>
                     <p>Conditions are often used to compare variables. The following code illustrates the most common comparison operators and their expected output:</p>
-                    <pre class="prettyprint linenumes">
+                    <pre class="prettyprint linenums">
 3 == 4 # False
 3 != 4 # True
 3 &lt;  4 # True
