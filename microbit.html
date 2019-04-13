@@ -109,18 +109,18 @@
                     </p>
                     <p>Before we start typing what message we want to scroll across the LEDs, we need to first import the microbit libraries that we have installed.</p>
                     <pre class="prettyprint linenums">
-from microbit import **
+from microbit import *
                     </pre>
                     <p>Now, we can use the display.scroll() function in order to slowly scroll a message across the screen (remember to not delete the import line we added earlier):</p>
                     <pre class="prettyprint linenums">
-from microbit import **
+from microbit import *
 
 display.scroll('I &lt;3 Hackonnect!')
                     </pre>
                     <p>Try to scroll different messages across the screen! Of course, scrolling messages can be useful, but sometimes we want to display images on the screen. Because there are only 25 LEDs the types of images we are able to display are slightly limited.</p>
                     <p>First, let's look at how we can use prebuilt images given to us in the microbit library:</p>
                     <pre class="prettyprint linenums">
-from microbit import **
+from microbit import *
 
 display.show(Image.HEART)
 sleep(2000)
@@ -133,7 +133,7 @@ display.clear()
                     <p>There are three new functions we are using here, display.show(), display.clear() and sleep(). It's fairly obvious what these three functions do: one shows an image, one clears the image shown away from the LED screen and the last one puts the microbit to sleep for a certain amount of time. Do note that the number you put into sleep should be the time you want your microbit to sleep for in <b>milliseconds</b>. Try playing around with the prebuilt images; yu can find the entire list of prebuilt images <a href="https://microbit-micropython.readthedocs.io/en/latest/tutorials/images.html">here</a>.</p>
                     <p>We can also make custom images to show on the 25 LEDs. As seen below, we will need to type out a 5x5 grid of numbers ourselves and save it in a variable. The numbers 0-9 indicates the brightness you want each LED to be at, with 9 being the brightest and 0 turning the LED off. Once we are done making the variable, we can use that variable as the argument of display.show() in order to show our custom image.</p>
                     <pre class="prettyprint linenums">
-from microbit import **
+from microbit import *
 
 square = Image('99999:'
 &emsp;&emsp;'95559:'
@@ -150,7 +150,7 @@ display.clear()
                     </pre>
                     <p>Displays do not have to be static either, we can have different animations that run on the microbit screens. To do this, simply use a list of images as the argument for display.show(). You can customise the delay between each image and indicate whether you want the animation to loop or not:</p>
                     <pre class="prettyprint linenums">
-from microbit import **
+from microbit import *
 
 large_square = Image('99999:90009:90009:90009:99999')
 medium_square = Image('00000:09990:09090:09990:00000')
@@ -161,7 +161,7 @@ display.clear()
                     </pre>
                     <p>Sometimes, you don't want to change the entire LED screen; you only want to manipulate the brightness of one pixel. Luckily, you are also able to do this through using the display.set_pixel(x_coordinate, y_coordinate, brightness) function. The coordinates are 0 indexed, with the top-left-hand corner being (0, 0) and the bottom-right-hand corner being (4, 4). You can also get the brightness of a particular LED through using display.get_pixel(x_coordinate, y_coordinate).</p>
                     <pre class="prettyprint linenums">
-from microbit import **
+from microbit import *
 
 display.set_pixel(0, 0, 7)
 sleep(1000)
@@ -172,7 +172,7 @@ display.scroll(display.get_pixel(0, 0))
                     <span class="card-title">Microbit Buttons</span>
                     <p>To the left and to the right of the LEDs, there are two buttons you can see. They are called button_a and button_b respectively. You can use the is_pressed() function in order to see if a button is being pressed. Because of how if statements work, when you need to see if both buttons are pressed, that has to be the first if statement as shown below:</p>
                     <pre class="prettyprint linenums">
-from microbit import **
+from microbit import *
 
 while True:
 &emsp;&emsp;if button_a.is_pressed() and button_b.is_pressed():
@@ -189,7 +189,7 @@ display.clear()
                     </pre>
                     <p>Another function that may come in handy is get_presses() that checks how many times the button was pressed while the microbit is asleep:</p>
                     <pre class="prettyprint linenums">
-from microbit import **
+from microbit import *
 
 display.scroll('START!')
 sleep(5000)
@@ -198,7 +198,7 @@ display.scroll(str(presses))
                     </pre>
                     <p>You can also see if the button was pressed while the microbit is asleep using was_pressed()</p>
                     <pre class="prettyprint linenums">
-from microbit import **
+from microbit import *
 
 display.show('?')
 sleep(1000)
@@ -214,20 +214,20 @@ display.clear()
                     <span class="card-title">Sensors on the Microbit</span>
                     <p>The microbit has various different sensors that we can use in our group projects. For example, we can get the surrounding temperature (in degrees Celsius) easily using the function temperature()</p>
                     <pre class="prettyprint linenums">
-from microbit import **
+from microbit import *
 
 display.scroll(str(temperature()))
                     </pre>
                     <p>You can also see how long the microbit has been running in milliseconds using running_time()</p>
                     <pre class="prettyprint linenums">
-from microbit import **
+from microbit import *
 
 sleep(2000)
 display.scroll(str(running_time()))
                     </pre>
                     <p>As you can see, the running_time() is slightly higher than 2000 milliseconds. This is because when the microbit runs each function, it takes a bit of time to process the instruction and understand how it will react. The microbit also has an accelerometer built in, allowing you to measure the force in milligrams between -+2000. Use accelerometer.get_x(), .get_y() and .get_z() (on the 3 different directions). You can also use get_values() to get all three values as once as a tuple. After you flash the program into the microbit, click on the REPL button. You will be able to see the three accelerometer values get printed constantly as you tilt your microbit around.</p>
                     <pre class="prettyprint linenums">
-from microbit import **
+from microbit import *
 
 while not button_a.is_pressed() and not button_b.is_pressed():
 &emsp;&emsp;sleep(50)
@@ -235,7 +235,7 @@ while not button_a.is_pressed() and not button_b.is_pressed():
                     </pre>
                     <p>Your microbit is also to recognise different types of gestures such as tilting to the left and shaking the microbit from these values:</p>
                     <pre class="prettyprint linenums">
-from microbit import **
+from microbit import *
 
 while not button_a.is_pressed() and not button_b.is_pressed():
 &emsp;&emsp;sleep(100)
@@ -243,7 +243,7 @@ while not button_a.is_pressed() and not button_b.is_pressed():
                     </pre>
                     <p>The available gestures are: up, down, left, right, face up, face down, free fall, 3g, 6g, 8g and shake. You can also use accelerometer.is_gesture(gesture_name), accelerometer.was_gesture(gesture_name) and accelerometer.get_gestures(), similar to what we did earlier with the buttons. Microbits can also act as a compass, measuring the magnetic field strength on the x, y and z axis. We can test this in a similar way to how we tested the accelerometer.</p>
                     <pre class="prettyprint linenums">
-from microbit import **
+from microbit import *
 
 while not button_a.is_pressed() and not button_b.is_pressed():
 &emsp;&emsp;sleep(50)
@@ -253,7 +253,7 @@ while not button_a.is_pressed() and not button_b.is_pressed():
                     <p>To use these values as a compass however, we need to calibrate the compass first. Follow the instructions displayed on the microbit in order to calibrate the compass. Use compass.heading() to get the heading of the compass after you calibrate it. The program below gives you an example of how the compass could be used. The screen is refreshed every 100ms, or 0.1s. Through converting the angle (compass.heading()) to a specific clock hour, we can represent the directions through different clocks. Try it out yourself and see how it works.</p>
                     <p></p>
                     <pre class="prettyprint linenums">
-from microbit import **
+from microbit import *
 
 compass.calibrate()
 display.scroll('DONE!')
